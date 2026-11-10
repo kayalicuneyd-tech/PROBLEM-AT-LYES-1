@@ -1,22 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="./style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pen</title>
-  </head>
-  <body>
-
-    <script src="./script.js"></script>
-  </body>
-</html>
-<!DOCTYPE html>
 <html lang="tr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>4 İşlem Problem Atölyesi | Hazırlayan: Cüneyd Kayalı</title>
+  
+  <!-- PWA & Kısayol İkonları (Data URI SVG) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Crect width='120' height='120' rx='28' fill='%233F6A58'/%3E%3Crect x='10' y='10' width='100' height='100' rx='20' fill='%23FAF8F5'/%3E%3Ctext x='60' y='56' font-family='sans-serif' font-size='34' font-weight='bold' fill='%233F6A58' text-anchor='middle'%3E4%C4%B0%3C/text%3E%3Ctext x='60' y='90' font-family='sans-serif' font-size='22' font-weight='bold' fill='%23C56B4E' text-anchor='middle'%3E+%E2%88%92%C3%97%C3%B7%3C/text%3E%3C/svg%3E" />
+  <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Crect width='120' height='120' rx='28' fill='%233F6A58'/%3E%3Crect x='10' y='10' width='100' height='100' rx='20' fill='%23FAF8F5'/%3E%3Ctext x='60' y='56' font-family='sans-serif' font-size='34' font-weight='bold' fill='%233F6A58' text-anchor='middle'%3E4%C4%B0%3C/text%3E%3Ctext x='60' y='90' font-family='sans-serif' font-size='22' font-weight='bold' fill='%23C56B4E' text-anchor='middle'%3E+%E2%88%92%C3%97%C3%B7%3C/text%3E%3C/svg%3E" />
+
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Google Fonts: Lexend & Plus Jakarta Sans -->
@@ -38,7 +30,7 @@
       --accent-warm: #C56B4E;
       --accent-soft: #E3EAE6;
       --border-color: #DCD7CD;
-      --question-font-size: 12px;
+      --question-font-size: 11.5px;
     }
 
     * { box-sizing: border-box; }
@@ -101,7 +93,7 @@
     .q-text {
       font-size: var(--question-font-size);
       color: var(--text-primary);
-      line-height: 1.34;
+      line-height: 1.32;
     }
 
     /* Anahtar Kelime Vurgulama (İpucu Modu) */
@@ -124,7 +116,7 @@
       background-color: var(--bg-paper);
       border: 1px solid #C5BFB4;
       border-radius: 5px;
-      font-size: 0.66rem;
+      font-size: 0.65rem;
       color: var(--text-primary);
       align-items: center;
       justify-content: space-between;
@@ -137,7 +129,7 @@
     .mini-price-table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 0.65rem;
+      font-size: 0.63rem;
       text-align: center;
     }
     .mini-price-table th {
@@ -151,10 +143,11 @@
     .svg-schema {
       display: flex;
       align-items: center;
-      gap: 5px;
+      flex-wrap: wrap;
+      gap: 4px;
       width: 100%;
       font-weight: 600;
-      font-size: 0.66rem;
+      font-size: 0.64rem;
     }
     .dot-badge {
       display: inline-flex;
@@ -164,7 +157,7 @@
       border: 1px solid #848C88;
       border-radius: 4px;
       background-color: var(--bg-card);
-      font-size: 0.63rem;
+      font-size: 0.62rem;
       font-weight: 700;
     }
 
@@ -178,7 +171,7 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      font-size: 0.66rem;
+      font-size: 0.65rem;
       color: var(--text-muted);
       position: relative;
     }
@@ -210,7 +203,7 @@
     .struct-col {
       border-right: 1px dashed #B5AFA3;
       padding-right: 3px;
-      font-size: 0.62rem;
+      font-size: 0.61rem;
       font-weight: 700;
       color: #454D49;
     }
@@ -223,7 +216,7 @@
       display: none;
       gap: 3px;
       font-weight: 700;
-      font-size: 0.62rem;
+      font-size: 0.61rem;
       color: var(--text-secondary);
       align-items: center;
     }
@@ -246,7 +239,7 @@
       padding: 1px 5px;
       border-radius: 4px;
       font-weight: 700;
-      font-size: 0.65rem;
+      font-size: 0.64rem;
     }
     .show-answers .q-answer-tag {
       display: inline-block;
@@ -258,7 +251,7 @@
     @media print {
       @page {
         size: A4 portrait;
-        margin: 0; /* Tarayıcının fazladan kenar boşluğu ekleyip sayfayı 4'e katlamasını önler */
+        margin: 0;
       }
 
       * {
@@ -275,7 +268,7 @@
         overflow: visible !important;
       }
 
-      .no-print, 
+      .no-print,
       .q-refresh-btn,
       header,
       #toastBox,
@@ -302,7 +295,6 @@
         overflow: visible !important;
       }
 
-      /* Sayfalandırmayı kilitleyen overflow-x-auto burada ezilir */
       #pagesWrapper,
       .pages-container {
         display: block !important;
@@ -328,7 +320,7 @@
         display: flex !important;
         flex-direction: column !important;
         justify-content: space-between !important;
-        overflow: hidden !important; /* Fazlalık taşmaları keserek araya boş sayfa girmesini engeller */
+        overflow: hidden !important;
         page-break-before: auto !important;
         break-before: auto !important;
         page-break-after: always !important;
@@ -390,13 +382,13 @@
       </div>
       <div>
         <h1 class="text-base md:text-lg font-bold tracking-tight" style="color: var(--text-primary);">4 İşlem Problem Atölyesi</h1>
-        <p class="text-xs font-semibold" style="color: var(--accent-warm);">Hazırlayan: Cüneyd Kayalı</p>
+        <p class="text-xs font-semibold" style="color: var(--accent-warm);">Hazırlayan: Cüneyd Kayalı • Özel Eğitim Öğretmeni</p>
       </div>
     </div>
 
-    <nav class="flex items-center gap-1.5 p-1 rounded-xl border" style="background-color: var(--bg-card); border-color: var(--border-color);">
+    <nav class="flex flex-wrap items-center gap-1.5 p-1 rounded-xl border" style="background-color: var(--bg-card); border-color: var(--border-color);">
       <button id="tab-welcome" onclick="switchScreen('welcome')" class="px-3 py-1.5 rounded-lg text-xs md:text-sm font-semibold transition-all" style="background-color: var(--bg-paper); color: var(--accent-primary);">
-        Giriş Ekranı
+        ℹ️ Tanıtım
       </button>
       <button id="tab-workspace" onclick="switchScreen('workspace')" class="px-3 py-1.5 rounded-lg text-xs md:text-sm font-semibold transition-all" style="color: var(--text-secondary);">
         Öğretmen Paneli & Kağıt
@@ -404,7 +396,7 @@
       <button id="tab-pool" onclick="switchScreen('pool')" class="px-3 py-1.5 rounded-lg text-xs md:text-sm font-semibold transition-all" style="color: var(--text-secondary);">
         Soru Havuzum (<span id="pool-count-nav">0</span>)
       </button>
-      <button onclick="triggerPrint()" class="ml-1 px-3.5 py-1.5 rounded-lg text-xs md:text-sm font-bold shadow-sm transition-all flex items-center gap-1.5" style="background-color: var(--accent-primary); color: #FAF8F5;">
+      <button type="button" onclick="triggerPrint()" class="ml-1 px-3.5 py-1.5 rounded-lg text-xs md:text-sm font-bold shadow-sm transition-all flex items-center gap-1.5 hover:opacity-90 active:scale-95 cursor-pointer" style="background-color: var(--accent-primary); color: #FAF8F5;">
         🖨️ Yazdır / PDF
       </button>
     </nav>
@@ -422,47 +414,47 @@
       </h2>
 
       <p class="text-sm md:text-base max-w-2xl mx-auto mb-6 leading-relaxed" style="color: var(--text-secondary);">
-        1. sınıftan 4. sınıf düzeyine kadar; <strong>Zaman ve Yaş, Uzunluk ve Çevre, Deste-Düzine ve Kat/Kesir, Mini Fiyat Tablolu Para, Ağırlık, Sıvı ve Hız</strong> konularında, kareli çözüm alanı ve <em>Verilen-İstenen-Çözüm</em> şablonuyla desteklenen 20 soruluk (10+10 iki sayfa A4) çalışma kağıtları üretin.
+        <strong>1. Seviye'den 5. Seviye'ye</strong> kadar kademeli zorlukta; her birinde <strong>10'ar farklı problem kurgusu</strong> (toplam 80 özgün şablon) bulunan <strong>Zaman ve Yaş, Uzunluk ve Çevre, Deste-Düzine ve Kat/Kesir, Mini Fiyat Tablolu Para, Ağırlık, Sıvı, Hız ve Günlük Yaşam</strong> konularında 20 soruluk (10+10 iki sayfa A4) çalışma kağıtları üretin.
       </p>
 
       <!-- Hazırlayan Rozeti -->
       <div class="inline-flex items-center gap-3 px-6 py-3 rounded-2xl border mb-8" style="background-color: var(--bg-card); border-color: var(--border-color);">
         <span class="w-3 h-3 rounded-full" style="background-color: var(--accent-warm);"></span>
         <span class="text-sm md:text-base" style="color: var(--text-secondary);">
-          Hazırlayan: <strong class="font-display text-base md:text-lg" style="color: var(--text-primary);">Cüneyd Kayalı</strong>
+          Hazırlayan: <strong class="font-display text-base md:text-lg" style="color: var(--text-primary);">Cüneyd Kayalı - Özel Eğitim Öğretmeni</strong>
         </span>
       </div>
 
       <!-- Özellik Kartları -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-left mb-8">
         <div class="p-4 rounded-2xl border" style="background-color: var(--bg-paper); border-color: var(--border-color);">
-          <h4 class="font-bold text-sm mb-1" style="color: var(--accent-primary);">8 Zengin Problem Türü</h4>
+          <h4 class="font-bold text-sm mb-1" style="color: var(--accent-primary);">8 Konu × 10 Farklı Kurgu (80 Şablon)</h4>
           <p class="text-xs leading-relaxed" style="color: var(--text-secondary);">
-            Saat-süre, takvim, yaş, kumaş/tel kesme, bahçe çevresi, deste-düzine, yarım-çeyrek, kat ve mini fiyat listeli alışveriş kurguları.
+            Her problem türünde (Ağırlık, Zaman, Uzunluk, Kesir, Para, Sıvı, Hız, Günlük Yaşam) 10'ar farklı gerçek yaşam senaryosu bulunur.
           </p>
         </div>
         <div class="p-4 rounded-2xl border" style="background-color: var(--bg-paper); border-color: var(--border-color);">
-          <h4 class="font-bold text-sm mb-1" style="color: var(--accent-primary);">Kareli Zemin & Şablon Desteği</h4>
+          <h4 class="font-bold text-sm mb-1" style="color: var(--accent-primary);">1'den 5. Seviyeye Kademeli Sayılar</h4>
           <p class="text-xs leading-relaxed" style="color: var(--text-secondary);">
-            Öğretmen panelinden açılıp kapatılabilen karelajlı çözüm kutusu, Verilen-İstenen-Çözüm şablonu ve anahtar kelime vurgulama.
+            Sınıf yerine 1. Seviye'den 5. Seviye'ye uzanan zorluk yapısı. Seviye arttıkça sayılar büyür; 5. Seviye'de binler ve on binlerle işlem yapılır.
           </p>
         </div>
         <div class="p-4 rounded-2xl border" style="background-color: var(--bg-paper); border-color: var(--border-color);">
-          <h4 class="font-bold text-sm mb-1" style="color: var(--accent-primary);">Tam Uyumlu 2 Sayfa A4</h4>
+          <h4 class="font-bold text-sm mb-1" style="color: var(--accent-primary);">Kesintisiz A4 Yazdırma Desteği</h4>
           <p class="text-xs leading-relaxed" style="color: var(--text-secondary);">
-            Taşma yapmayan, sayfa bölünmelerini koruyan, siyah-beyaz baskıya uygun fiyat tabloları ve 10+10 soruluk kusursuz 2 sayfa A4 çıktı düzeni.
+            Kareli çözüm alanı, Verilen-İstenen-Çözüm şablonu ve her ortamda çalışan gelişmiş 2 sayfa A4 yazdırma motoru.
           </p>
         </div>
       </div>
 
       <div class="flex flex-wrap justify-center gap-3">
-        <button onclick="switchScreen('workspace')" class="px-6 py-3 rounded-xl font-semibold text-sm shadow-sm transition-transform hover:-translate-y-0.5" style="background-color: var(--accent-primary); color: var(--bg-paper);">
-          Öğretmen Paneline Geç →
+        <button type="button" onclick="switchScreen('workspace')" class="px-6 py-3 rounded-xl font-semibold text-sm shadow-sm transition-transform hover:-translate-y-0.5 cursor-pointer" style="background-color: var(--accent-primary); color: var(--bg-paper);">
+          Uygulamaya Başla (Öğretmen Paneli) →
         </button>
-        <button onclick="triggerPrint()" class="px-6 py-3 rounded-xl font-semibold text-sm shadow-sm transition-transform hover:-translate-y-0.5" style="background-color: var(--accent-warm); color: #FAF8F5;">
+        <button type="button" onclick="triggerPrint()" class="px-6 py-3 rounded-xl font-semibold text-sm shadow-sm transition-transform hover:-translate-y-0.5 cursor-pointer" style="background-color: var(--accent-warm); color: #FAF8F5;">
           🖨️ Sayfayı Hemen Yazdır
         </button>
-        <button onclick="switchScreen('pool')" class="px-6 py-3 rounded-xl font-semibold text-sm border transition-colors" style="background-color: var(--bg-paper); color: var(--text-primary); border-color: var(--border-color);">
+        <button type="button" onclick="switchScreen('pool')" class="px-6 py-3 rounded-xl font-semibold text-sm border transition-colors cursor-pointer" style="background-color: var(--bg-paper); color: var(--text-primary); border-color: var(--border-color);">
           + Kendi Sorularımı Ekle
         </button>
       </div>
@@ -486,14 +478,15 @@
           <input type="text" id="sheetTitleInput" value="Dört İşlem Problemleri Çalışma Kağıdı" oninput="updateHeaders()" class="w-full px-3 py-1.5 rounded-lg border text-xs font-medium outline-none" style="background-color: var(--bg-paper); border-color: var(--border-color);" />
         </div>
 
-        <!-- Öğrenci / Sınıf Düzeyi -->
+        <!-- Zorluk / Öğrenci Seviyesi (1 - 5. Seviye) -->
         <div class="mb-3">
-          <label class="block text-xs font-bold mb-1" style="color: var(--text-secondary);">Öğrenci / Sınıf Düzeyi</label>
+          <label class="block text-xs font-bold mb-1" style="color: var(--text-secondary);">Öğrenci Seviyesi (Sayı Büyüklüğü)</label>
           <select id="gradeLevelSelect" onchange="shuffleAndGenerate20()" class="w-full px-3 py-1.5 rounded-lg border text-xs font-semibold outline-none cursor-pointer" style="background-color: var(--bg-paper); border-color: var(--border-color);">
-            <option value="grade1">1. Sınıf Düzeyi (1 - 20 Arası / Temel)</option>
-            <option value="grade2" selected>2. Sınıf Düzeyi (1 - 100 Arası / Standart)</option>
-            <option value="grade3">3. Sınıf Düzeyi (3 Basamaklı / Gelişmiş)</option>
-            <option value="grade4">4. Sınıf Düzeyi (Büyük Sayılar & İleri Kurgu)</option>
+            <option value="level1">1. Seviye (1 - 20 Arası Küçük Sayılar)</option>
+            <option value="level2" selected>2. Seviye (10 - 100 Arası İki Basamaklı)</option>
+            <option value="level3">3. Seviye (100 - 500 Arası Üç Basamaklı)</option>
+            <option value="level4">4. Seviye (500 - 2.500 Arası Dört Basamaklı)</option>
+            <option value="level5">5. Seviye (2.500 - 25.000+ Büyük Sayılar)</option>
           </select>
         </div>
 
@@ -520,27 +513,27 @@
           </div>
         </div>
 
-        <!-- 8 Problem Türü (Konu Havuzu) -->
+        <!-- 8 Problem Türü (Her birinde 10 farklı soru türü) -->
         <div class="mb-3">
           <div class="flex justify-between items-center mb-1">
-            <label class="text-xs font-bold" style="color: var(--text-secondary);">Problem Türleri (8 Konu)</label>
+            <label class="text-xs font-bold" style="color: var(--text-secondary);">Problem Türleri (8 Konu × 10 Tür)</label>
           </div>
           <div class="flex flex-wrap gap-1 mb-1.5">
-            <button type="button" onclick="selectOnlyTheme('time_age')" class="px-2 py-0.5 rounded border text-[11px] font-bold" style="background-color: var(--bg-paper); border-color: var(--border-color);">Zaman & Yaş</button>
-            <button type="button" onclick="selectOnlyTheme('length_perim')" class="px-2 py-0.5 rounded border text-[11px] font-bold" style="background-color: var(--bg-paper); border-color: var(--border-color);">Uzunluk & Çevre</button>
-            <button type="button" onclick="selectOnlyTheme('dozen_frac')" class="px-2 py-0.5 rounded border text-[11px] font-bold" style="background-color: var(--bg-paper); border-color: var(--border-color);">Deste/Kesir</button>
-            <button type="button" onclick="selectOnlyTheme('money')" class="px-2 py-0.5 rounded border text-[11px] font-bold" style="background-color: var(--bg-paper); border-color: var(--border-color);">Fiyat Tablolu</button>
-            <button type="button" onclick="selectAllThemes()" class="px-2 py-0.5 rounded border text-[11px] font-bold" style="background-color: var(--accent-soft); color: var(--accent-primary); border-color: var(--border-color);">Tümü</button>
+            <button type="button" onclick="selectOnlyTheme('weight')" class="px-2 py-0.5 rounded border text-[11px] font-bold" style="background-color: var(--bg-paper); border-color: var(--border-color);">Ağırlık (10)</button>
+            <button type="button" onclick="selectOnlyTheme('time_age')" class="px-2 py-0.5 rounded border text-[11px] font-bold" style="background-color: var(--bg-paper); border-color: var(--border-color);">Zaman & Yaş (10)</button>
+            <button type="button" onclick="selectOnlyTheme('length_perim')" class="px-2 py-0.5 rounded border text-[11px] font-bold" style="background-color: var(--bg-paper); border-color: var(--border-color);">Uzunluk (10)</button>
+            <button type="button" onclick="selectOnlyTheme('money')" class="px-2 py-0.5 rounded border text-[11px] font-bold" style="background-color: var(--bg-paper); border-color: var(--border-color);">Para (10)</button>
+            <button type="button" onclick="selectAllThemes()" class="px-2 py-0.5 rounded border text-[11px] font-bold" style="background-color: var(--accent-soft); color: var(--accent-primary); border-color: var(--border-color);">Tümü (80)</button>
           </div>
           <div class="p-2 rounded-xl border space-y-1 text-xs" style="background-color: var(--bg-paper); border-color: var(--border-color);">
-            <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" class="theme-cb accent-[#3F6A58]" value="time_age" checked /> Zaman ve Yaş (Saat, Süre, Takvim, Yaş)</label>
-            <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" class="theme-cb accent-[#3F6A58]" value="length_perim" checked /> Uzunluk ve Çevre (Kumaş, Tel, Bahçe)</label>
-            <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" class="theme-cb accent-[#3F6A58]" value="dozen_frac" checked /> Deste, Düzine ve Kat/Kesir (Yarım/Çeyrek)</label>
-            <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" class="theme-cb accent-[#3F6A58]" value="money" checked /> Mini Fiyat Listeli / Tablolu Para (TL)</label>
-            <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" class="theme-cb accent-[#3F6A58]" value="weight" checked /> Ağırlık Problemleri (kg, Kasa, Tartı)</label>
-            <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" class="theme-cb accent-[#3F6A58]" value="liquid" checked /> Sıvı Ölçme Problemleri (Litre, Bardak)</label>
-            <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" class="theme-cb accent-[#3F6A58]" value="speed" checked /> Hız, Yol ve Zaman Problemleri</label>
-            <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" class="theme-cb accent-[#3F6A58]" value="general" checked /> Günlük Yaşam ve Nesne Problemleri</label>
+            <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" class="theme-cb accent-[#3F6A58]" value="time_age" checked /> Zaman ve Yaş (10 Farklı Soru Türü)</label>
+            <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" class="theme-cb accent-[#3F6A58]" value="length_perim" checked /> Uzunluk ve Çevre (10 Farklı Soru Türü)</label>
+            <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" class="theme-cb accent-[#3F6A58]" value="dozen_frac" checked /> Deste, Düzine ve Kesir (10 Farklı Tür)</label>
+            <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" class="theme-cb accent-[#3F6A58]" value="money" checked /> Fiyat Tablolu Para (10 Farklı Tür)</label>
+            <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" class="theme-cb accent-[#3F6A58]" value="weight" checked /> Ağırlık Problemleri (10 Farklı Tür)</label>
+            <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" class="theme-cb accent-[#3F6A58]" value="liquid" checked /> Sıvı Ölçme Problemleri (10 Farklı Tür)</label>
+            <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" class="theme-cb accent-[#3F6A58]" value="speed" checked /> Hız, Yol ve Zaman (10 Farklı Tür)</label>
+            <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" class="theme-cb accent-[#3F6A58]" value="general" checked /> Günlük Yaşam & Nesne (10 Farklı Tür)</label>
           </div>
         </div>
 
@@ -549,27 +542,27 @@
           <label class="block text-xs font-bold mb-1" style="color: var(--text-secondary);">Çözüm Alanı & Görsel Destekler</label>
           <div class="p-2 rounded-xl border space-y-1.5 text-xs" style="background-color: var(--bg-paper); border-color: var(--border-color);">
             <label class="flex items-center gap-2 cursor-pointer">
-              <input type="checkbox" checked onchange="toggleClass('grid-bg', this.checked)" class="accent-[#3F6A58]" />
+              <input type="checkbox" id="cbGrid" checked onchange="toggleClass('grid-bg', this.checked)" class="accent-[#3F6A58]" />
               <span><strong>Kareli Zemin</strong> (Karelajlı Çözüm Kutusu)</span>
             </label>
             <label class="flex items-center gap-2 cursor-pointer">
-              <input type="checkbox" onchange="toggleClass('show-structured', this.checked)" class="accent-[#3F6A58]" />
+              <input type="checkbox" id="cbStruct" onchange="toggleClass('show-structured', this.checked)" class="accent-[#3F6A58]" />
               <span><strong>Verilen – İstenen – Çözüm</strong> Şablonu</span>
             </label>
             <label class="flex items-center gap-2 cursor-pointer">
-              <input type="checkbox" checked onchange="toggleClass('highlight-keywords', this.checked)" class="accent-[#3F6A58]" />
+              <input type="checkbox" id="cbKw" checked onchange="toggleClass('highlight-keywords', this.checked)" class="accent-[#3F6A58]" />
               <span><strong>Anahtar Kelime Vurgulama</strong> (İpucu Modu)</span>
             </label>
             <label class="flex items-center gap-2 cursor-pointer">
-              <input type="checkbox" checked onchange="toggleClass('show-visuals', this.checked)" class="accent-[#3F6A58]" />
+              <input type="checkbox" id="cbVis" checked onchange="toggleClass('show-visuals', this.checked)" class="accent-[#3F6A58]" />
               <span><strong>Mini Fiyat Tablosu & Görsel Şemalar</strong></span>
             </label>
             <label class="flex items-center gap-2 cursor-pointer">
-              <input type="checkbox" checked onchange="toggleClass('show-op-boxes', this.checked)" class="accent-[#3F6A58]" />
+              <input type="checkbox" id="cbOpBox" checked onchange="toggleClass('show-op-boxes', this.checked)" class="accent-[#3F6A58]" />
               <span><strong>Hangi İşlem?</strong> Kutuları [ + - × ÷ ]</span>
             </label>
             <label class="flex items-center gap-2 cursor-pointer">
-              <input type="checkbox" onchange="toggleClass('show-answers', this.checked)" class="accent-[#3F6A58]" />
+              <input type="checkbox" id="cbAns" onchange="toggleClass('show-answers', this.checked)" class="accent-[#3F6A58]" />
               <span><strong>Cevap Anahtarını</strong> Kartlarda Göster</span>
             </label>
           </div>
@@ -580,9 +573,9 @@
           <label class="block text-xs font-bold mb-1" style="color: var(--text-secondary);">Soru Metni Punto Ayarı</label>
           <div class="flex items-center gap-2 px-3 py-1.5 rounded-xl border" style="background-color: var(--bg-paper); border-color: var(--border-color);">
             <span class="text-xs">A</span>
-            <input type="range" min="10" max="15" step="0.5" value="12" oninput="changeFontSize(this.value)" class="flex-1 accent-[#3F6A58] cursor-pointer" />
+            <input type="range" min="10" max="14.5" step="0.5" value="11.5" oninput="changeFontSize(this.value)" class="flex-1 accent-[#3F6A58] cursor-pointer" />
             <span class="text-sm font-bold">A</span>
-            <span id="fontSizeLabel" class="px-2 py-0.5 rounded text-[11px] font-bold" style="background-color: var(--accent-soft); color: var(--accent-primary);">12 px</span>
+            <span id="fontSizeLabel" class="px-2 py-0.5 rounded text-[11px] font-bold" style="background-color: var(--accent-soft); color: var(--accent-primary);">11.5 px</span>
           </div>
         </div>
 
@@ -598,13 +591,16 @@
 
         <!-- Aksiyon Butonları -->
         <div class="space-y-2">
-          <button onclick="shuffleAndGenerate20()" class="w-full py-2.5 px-4 rounded-xl font-bold text-xs md:text-sm shadow-sm transition-transform active:scale-95" style="background-color: var(--accent-warm); color: #FAF8F5;">
+          <button type="button" onclick="shuffleAndGenerate20()" class="w-full py-2.5 px-4 rounded-xl font-bold text-xs md:text-sm shadow-sm transition-transform active:scale-95 cursor-pointer" style="background-color: var(--accent-warm); color: #FAF8F5;">
             🎲 Soruları Kar (20 Soru Üret)
           </button>
-          <button onclick="triggerPrint()" class="w-full py-2.5 px-4 rounded-xl font-bold text-xs md:text-sm shadow-sm transition-transform active:scale-95" style="background-color: var(--accent-primary); color: #FAF8F5;">
+          <button type="button" onclick="triggerPrint()" class="w-full py-2.5 px-4 rounded-xl font-bold text-xs md:text-sm shadow-sm transition-transform active:scale-95 cursor-pointer" style="background-color: var(--accent-primary); color: #FAF8F5;">
             🖨️ Yazdır / PDF Kaydet (2 Sayfa)
           </button>
-          <button onclick="switchScreen('pool')" class="w-full py-2 px-4 rounded-xl font-semibold text-xs border" style="background-color: var(--bg-paper); border-color: var(--border-color); color: var(--text-primary);">
+          <button type="button" onclick="openPrintWindowFallback()" class="w-full py-2 px-4 rounded-xl font-semibold text-xs border transition-colors hover:bg-[#E3EAE6] cursor-pointer" style="background-color: var(--bg-paper); border-color: var(--accent-primary); color: var(--accent-primary);">
+            📄 Yeni Sekmede Yazdırma Görünümü Aç
+          </button>
+          <button type="button" onclick="switchScreen('pool')" class="w-full py-2 px-4 rounded-xl font-semibold text-xs border cursor-pointer" style="background-color: var(--bg-paper); border-color: var(--border-color); color: var(--text-primary);">
             ➕ Havuza Kendi Sorumu Ekle
           </button>
         </div>
@@ -619,7 +615,7 @@
             <div class="flex justify-between items-center border-b-2 pb-1.5 mb-2" style="border-color: var(--accent-primary);">
               <div>
                 <h2 class="dynamic-sheet-title text-base font-bold" style="color: var(--text-primary);">Dört İşlem Problemleri Çalışma Kağıdı</h2>
-                <p id="subtitle-page-1" class="text-[11px] font-medium" style="color: var(--text-secondary);">2. Sınıf Düzeyi • Bölüm 1 (1 - 10. Sorular)</p>
+                <p id="subtitle-page-1" class="text-[11px] font-medium" style="color: var(--text-secondary);">2. Seviye • Bölüm 1 (1 - 10. Sorular)</p>
               </div>
               <div class="flex gap-4 px-3 py-1 rounded-lg border text-[11px]" style="background-color: var(--bg-card); border-color: var(--border-color); color: var(--text-secondary);">
                 <span><strong>Adı Soyadı:</strong> ....................................</span>
@@ -640,10 +636,10 @@
             <div class="flex justify-between items-center border-b-2 pb-1.5 mb-2" style="border-color: var(--accent-primary);">
               <div>
                 <h2 class="dynamic-sheet-title text-base font-bold" style="color: var(--text-primary);">Dört İşlem Problemleri Çalışma Kağıdı</h2>
-                <p id="subtitle-page-2" class="text-[11px] font-medium" style="color: var(--text-secondary);">2. Sınıf Düzeyi • Bölüm 2 (11 - 20. Sorular)</p>
+                <p id="subtitle-page-2" class="text-[11px] font-medium" style="color: var(--text-secondary);">2. Seviye • Bölüm 2 (11 - 20. Sorular)</p>
               </div>
               <div class="flex gap-4 px-3 py-1 rounded-lg border text-[11px]" style="background-color: var(--bg-card); border-color: var(--border-color); color: var(--text-secondary);">
-                <span><strong>Sınıfı / No:</strong> ....................</span>
+                <span><strong>Seviye / No:</strong> ....................</span>
                 <span><strong>Puan:</strong> ........</span>
               </div>
             </div>
@@ -667,17 +663,18 @@
       <div class="rounded-2xl p-5 border shadow-sm" style="background-color: var(--bg-surface); border-color: var(--border-color);">
         <h3 class="font-display font-bold text-base pb-2.5 mb-3 border-b" style="border-color: var(--border-color);">Havuza Yeni Soru Ekle</h3>
         <p class="text-xs mb-4 leading-relaxed" style="color: var(--text-secondary);">
-          Beğendiğiniz soruları sınıf seviyesi, işlem türü ve konusunu seçerek kaydedin. Kaydettiğiniz sorular tarayıcı hafızasında saklanır.
+          Beğendiğiniz soruları zorluk seviyesi, işlem türü ve konusunu seçerek kaydedin. Kaydettiğiniz sorular tarayıcı hafızasında saklanır.
         </p>
 
         <div class="space-y-3 text-xs">
           <div>
-            <label class="block font-bold mb-1" style="color: var(--text-secondary);">Sınıf Düzeyi</label>
+            <label class="block font-bold mb-1" style="color: var(--text-secondary);">Öğrenci Seviyesi</label>
             <select id="customGrade" class="w-full px-3 py-2 rounded-lg border outline-none" style="background-color: var(--bg-paper); border-color: var(--border-color);">
-              <option value="grade1">1. Sınıf Düzeyi</option>
-              <option value="grade2" selected>2. Sınıf Düzeyi</option>
-              <option value="grade3">3. Sınıf Düzeyi</option>
-              <option value="grade4">4. Sınıf Düzeyi</option>
+              <option value="level1">1. Seviye</option>
+              <option value="level2" selected>2. Seviye</option>
+              <option value="level3">3. Seviye</option>
+              <option value="level4">4. Seviye</option>
+              <option value="level5">5. Seviye</option>
             </select>
           </div>
 
@@ -708,7 +705,7 @@
 
           <div>
             <label class="block font-bold mb-1" style="color: var(--text-secondary);">Mini Tablo / Görsel İpucu Metni (İsteğe Bağlı)</label>
-            <input type="text" id="customVisual" placeholder="Örn: Simit: 10 TL | Ayran: 8 TL | Meyve Suyu: 12 TL" class="w-full px-3 py-2 rounded-lg border outline-none" style="background-color: var(--bg-paper); border-color: var(--border-color);" />
+            <input type="text" id="customVisual" placeholder="Örn: Simit: 15 TL | Ayran: 10 TL | Meyve Suyu: 20 TL" class="w-full px-3 py-2 rounded-lg border outline-none" style="background-color: var(--bg-paper); border-color: var(--border-color);" />
           </div>
 
           <div>
@@ -718,10 +715,10 @@
 
           <div>
             <label class="block font-bold mb-1" style="color: var(--text-secondary);">Cevap (İsteğe Bağlı)</label>
-            <input type="text" id="customAnswer" placeholder="Örn: 28 TL" class="w-full px-3 py-2 rounded-lg border outline-none" style="background-color: var(--bg-paper); border-color: var(--border-color);" />
+            <input type="text" id="customAnswer" placeholder="Örn: 40 TL" class="w-full px-3 py-2 rounded-lg border outline-none" style="background-color: var(--bg-paper); border-color: var(--border-color);" />
           </div>
 
-          <button onclick="addCustomQuestion()" class="w-full py-2.5 px-4 rounded-xl font-bold text-sm shadow-sm" style="background-color: var(--accent-primary); color: #FAF8F5;">
+          <button type="button" onclick="addCustomQuestion()" class="w-full py-2.5 px-4 rounded-xl font-bold text-sm shadow-sm cursor-pointer" style="background-color: var(--accent-primary); color: #FAF8F5;">
             💾 Soruyu Havuza Kaydet
           </button>
         </div>
@@ -731,7 +728,7 @@
       <div class="rounded-2xl p-5 border shadow-sm" style="background-color: var(--bg-surface); border-color: var(--border-color);">
         <div class="flex justify-between items-center pb-2.5 mb-4 border-b" style="border-color: var(--border-color);">
           <h3 class="font-display font-bold text-base">Kişisel Soru Havuzum (<span id="pool-count-title">0</span> Soru)</h3>
-          <button onclick="switchScreen('workspace')" class="px-3 py-1.5 rounded-lg border text-xs font-semibold" style="background-color: var(--bg-paper); border-color: var(--border-color);">
+          <button type="button" onclick="switchScreen('workspace')" class="px-3 py-1.5 rounded-lg border text-xs font-semibold cursor-pointer" style="background-color: var(--bg-paper); border-color: var(--border-color);">
             Kağıda Dön →
           </button>
         </div>
@@ -742,13 +739,55 @@
   </section>
 
   <script>
-    const names = ["Ali", "Zeynep", "Kerem", "Elif", "Mert", "Defne", "Ömer", "Selin", "Eymen", "Ayşe", "Burak", "Nisan", "Kaan", "Yağmur", "Emir", "Asya"];
+    const names = ["Ali", "Zeynep", "Kerem", "Elif", "Mert", "Defne", "Ömer", "Selin", "Eymen", "Ayşe", "Burak", "Nisan", "Kaan", "Yağmur", "Emir", "Asya", "Çınar", "Duru"];
 
-    const gradeConfigs = {
-      grade1: { label: "1. Sınıf Düzeyi", minAdd: 3, maxAdd: 10, minSub: 9, maxSub: 20, gMin: 2, gMax: 4, mMin: 2, mMax: 4, vMin: 2, vMax: 6 },
-      grade2: { label: "2. Sınıf Düzeyi", minAdd: 12, maxAdd: 45, minSub: 25, maxSub: 90, gMin: 2, gMax: 6, mMin: 3, mMax: 6, vMin: 5, vMax: 15 },
-      grade3: { label: "3. Sınıf Düzeyi", minAdd: 35, maxAdd: 180, minSub: 75, maxSub: 380, gMin: 3, gMax: 9, mMin: 4, mMax: 12, vMin: 20, vMax: 70 },
-      grade4: { label: "4. Sınıf Düzeyi", minAdd: 110, maxAdd: 480, minSub: 200, maxSub: 850, gMin: 4, gMax: 14, mMin: 6, mMax: 20, vMin: 45, vMax: 110 }
+    // 1. SEVİYE - 5. SEVİYE SAYI YAPILANDIRMASI (Seviye arttıkça sayılar büyür)
+    const levelConfigs = {
+      level1: {
+        label: "1. Seviye (Başlangıç)",
+        minAdd: 3, maxAdd: 12,
+        minSub: 10, maxSub: 22,
+        gMin: 2, gMax: 4,
+        mMin: 2, mMax: 5,
+        vMin: 4, vMax: 10,
+        priceMin: 3, priceMax: 10
+      },
+      level2: {
+        label: "2. Seviye (Temel)",
+        minAdd: 15, maxAdd: 55,
+        minSub: 35, maxSub: 98,
+        gMin: 3, gMax: 6,
+        mMin: 4, mMax: 9,
+        vMin: 15, vMax: 40,
+        priceMin: 10, priceMax: 35
+      },
+      level3: {
+        label: "3. Seviye (Orta)",
+        minAdd: 65, maxAdd: 280,
+        minSub: 140, maxSub: 550,
+        gMin: 4, gMax: 9,
+        mMin: 8, mMax: 24,
+        vMin: 45, vMax: 90,
+        priceMin: 35, priceMax: 120
+      },
+      level4: {
+        label: "4. Seviye (İleri)",
+        minAdd: 350, maxAdd: 1650,
+        minSub: 750, maxSub: 3400,
+        gMin: 6, gMax: 15,
+        mMin: 18, mMax: 65,
+        vMin: 70, vMax: 130,
+        priceMin: 120, priceMax: 480
+      },
+      level5: {
+        label: "5. Seviye (Üst Düzey - Büyük Sayılar)",
+        minAdd: 1800, maxAdd: 9500,
+        minSub: 4500, maxSub: 24000,
+        gMin: 12, gMax: 32,
+        mMin: 45, mMax: 180,
+        vMin: 95, vMax: 240,
+        priceMin: 450, priceMax: 2250
+      }
     };
 
     const opLabels = { add: "Toplama", sub: "Çıkarma", mul: "Çarpma", div: "Bölme", two_step: "2 Adımlı" };
@@ -757,15 +796,76 @@
       money: "Para", weight: "Ağırlık", liquid: "Sıvı", speed: "Hız & Yol", general: "Günlük Yaşam"
     };
 
-    // Güvenli Yazdırma Tetikleyicisi
-    function triggerPrint() {
-      switchScreen('workspace');
-      setTimeout(() => {
-        window.print();
-      }, 120);
+    function fmt(n) {
+      return Number(n).toLocaleString("tr-TR");
     }
 
-    // Bildirim Gösterici (Toast)
+    // ===============================================================
+    // YAZDIRMA MOTORU (Hem Doğrudan Print Hem Yeni Sekme Fallback)
+    // ===============================================================
+    function triggerPrint() {
+      switchScreen('workspace');
+      showToast("Yazdırma penceresi hazırlanıyor...");
+      requestAnimationFrame(() => {
+        setTimeout(() => {
+          try {
+            window.focus();
+            window.print();
+          } catch (err) {
+            openPrintWindowFallback();
+          }
+        }, 180);
+      });
+    }
+
+    // Tarayıcı/Önizleme Kısıtlamalarında Kesin Çalışan Yeni Sekme Yazdırma Fonksiyonu
+    function openPrintWindowFallback() {
+      switchScreen('workspace');
+      const wrapper = document.getElementById("pagesWrapper");
+      const styles = Array.from(document.querySelectorAll("style, link[rel='stylesheet']"))
+        .map(el => el.outerHTML)
+        .join("\n");
+
+      const win = window.open("", "_blank");
+      if (!win) {
+        showToast("Lütfen açılır pencere (pop-up) izni verin veya Ctrl+P tuşlarına basın.");
+        window.print();
+        return;
+      }
+
+      win.document.open();
+      win.document.write(`<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Yazdır - 4 İşlem Problem Atölyesi</title>
+  ${styles}
+  <style>
+    body { background: #FAF8F5 !important; margin: 0; padding: 0; }
+    .q-refresh-btn { display: none !important; }
+    .pages-container { display: flex; flex-direction: column; align-items: center; gap: 0; }
+    .a4-page { page-break-after: always; break-after: page; margin: 0 auto; box-shadow: none; border: none; }
+    .a4-page:last-child { page-break-after: auto; break-after: auto; }
+  </style>
+</head>
+<body>
+  <div class="no-print" style="background:#3F6A58;color:#FAF8F5;padding:10px 20px;display:flex;justify-content:space-between;align-items:center;font-family:sans-serif;">
+    <span><strong>4 İşlem Problem Atölyesi</strong> • Baskı Önizleme</span>
+    <button onclick="window.print()" style="background:#C56B4E;color:#fff;border:none;padding:8px 18px;border-radius:8px;font-weight:bold;cursor:pointer;">🖨️ Şimdi Yazdır / PDF Kaydet</button>
+  </div>
+  <div id="pagesWrapper" class="${wrapper.className}">
+    ${wrapper.innerHTML}
+  </div>
+  <script>
+    window.onload = function() {
+      setTimeout(function() { window.focus(); window.print(); }, 350);
+    };
+  <\/script>
+</body>
+</html>`);
+      win.document.close();
+    }
+
     function showToast(msg) {
       const box = document.getElementById("toastBox");
       document.getElementById("toastMessage").textContent = msg;
@@ -773,13 +873,13 @@
       setTimeout(() => box.classList.add("hidden"), 2600);
     }
 
-    // SİYAH-BEYAZ BASKIYA UYGUN BASİT GÖRSEL ŞEMA ÜRETİCİLER
+    // SİYAH-BEYAZ BASKIYA UYGUN GÖRSEL ŞEMA ÜRETİCİLER
     function svgClock(hour, infoText) {
       const angle = (hour % 12) * 30;
       const hx = (14 + 6 * Math.sin(angle * Math.PI / 180)).toFixed(1);
       const hy = (14 - 6 * Math.cos(angle * Math.PI / 180)).toFixed(1);
       return `<div class="svg-schema">
-        <svg width="22" height="22" viewBox="0 0 28 28">
+        <svg width="20" height="20" viewBox="0 0 28 28">
           <circle cx="14" cy="14" r="12" fill="none" stroke="#2B302E" stroke-width="1.8"/>
           <line x1="14" y1="14" x2="14" y2="5" stroke="#2B302E" stroke-width="1.6"/>
           <line x1="14" y1="14" x2="${hx}" y2="${hy}" stroke="#2B302E" stroke-width="2"/>
@@ -791,7 +891,7 @@
 
     function svgGarden(infoText) {
       return `<div class="svg-schema">
-        <svg width="30" height="18" viewBox="0 0 36 22">
+        <svg width="28" height="16" viewBox="0 0 36 22">
           <rect x="2" y="2" width="32" height="18" fill="none" stroke="#2B302E" stroke-width="1.8" stroke-dasharray="3,2"/>
         </svg>
         <span>${infoText}</span>
@@ -806,33 +906,37 @@
         rects += `<rect x="${2 + i * w}" y="3" width="${w}" height="14" fill="${fill}" stroke="#2B302E" stroke-width="1.4"/>`;
       }
       return `<div class="svg-schema">
-        <svg width="34" height="18" viewBox="0 0 36 20">${rects}</svg>
+        <svg width="32" height="16" viewBox="0 0 36 20">${rects}</svg>
         <span>${infoText}</span>
       </div>`;
     }
 
     function priceTableHTML(i1, p1, i2, p2, i3, p3) {
       return `<table class="mini-price-table">
-        <tr><th>${i1}: ${p1} TL</th><th>${i2}: ${p2} TL</th><th>${i3}: ${p3} TL</th></tr>
+        <tr><th>${i1}: ${fmt(p1)} TL</th><th>${i2}: ${fmt(p2)} TL</th><th>${i3}: ${fmt(p3)} TL</th></tr>
       </table>`;
+    }
+
+    function badgesHTML(...items) {
+      return `<div class="svg-schema">${items.map(x => `<span class="dot-badge">${x}</span>`).join(" ")}</div>`;
     }
 
     const defaultCustomQuestions = [
       {
-        id: 501, grade: "grade2", op: "two_step", theme: "money",
-        visual: priceTableHTML("Simit", 10, "Ayran", 8, "Meyve Suyu", 12),
+        id: 501, grade: "level2", op: "two_step", theme: "money",
+        visual: priceTableHTML("Simit", 15, "Ayran", 10, "Meyve Suyu", 20),
         text: "Yukarıdaki fiyat listesine göre kantinden 2 simit ve 1 ayran alan Ali, kantinciye <span class='kw'>toplam</span> kaç TL öder?",
-        answer: "28 TL"
+        answer: "40 TL"
       },
       {
-        id: 502, grade: "grade2", op: "add", theme: "time_age",
+        id: 502, grade: "level2", op: "add", theme: "time_age",
         visual: svgClock(9, "Başlangıç: 09.00 ➔ Süre: +2 Saat ➔ Bitiş: ?"),
         text: "Saat 09.00'da başlayan film 2 saat sürdü. Film bittiğinde saat kaçı gösterir?",
         answer: "11.00"
       },
       {
-        id: 503, grade: "grade2", op: "sub", theme: "dozen_frac",
-        visual: `<div class="svg-schema"><span class="dot-badge">1 Deste = 10</span> <span class="dot-badge">1 Deste = 10</span></div>`,
+        id: 503, grade: "level2", op: "sub", theme: "dozen_frac",
+        visual: badgesHTML("1 Deste = 10", "2 Deste = 20"),
         text: "Kırtasiyeden alınan <span class='kw'>2 deste</span> kalemin 6 tanesi kullanıldı. <span class='kw'>Geriye kaç</span> kalem kaldı?",
         answer: "14 kalem"
       }
@@ -848,7 +952,7 @@
       const words = [
         "toplam", "geriye kaç", "geriye", "farkı", "daha az", "daha fazla", "fazlası", "eksiği",
         "eşit olarak paylaştırdı", "eşit olarak", "eş parçalara", "her birinde", "her birine", "her gün",
-        "yarısı", "yarısını", "çeyreği", "çeyreğini", "deste", "düzine", "katının", "katı", "çevresi", "sonra", "para üstü"
+        "yarısı", "yarısını", "çeyreği", "çeyreğini", "deste", "düzine", "katının", "katı", "çevresi", "sonra", "para üstü", "net"
       ];
       let result = str;
       words.forEach(w => {
@@ -858,9 +962,12 @@
       return result;
     }
 
-    // 8 KONU x 5 İŞLEM DİNAMİK SORU MOTORU
-    function generateDynamicProblem(gradeKey, opKey, themeKey) {
-      const cfg = gradeConfigs[gradeKey] || gradeConfigs.grade2;
+    // ============================================================================
+    // 8 KONU × 10 FARKLI SORU TÜRÜ (TOPLAM 80 ÖZGÜN ŞABLON) + 5 SEVİYE MOTORU
+    // Her konuda 5 işlem türü × 2 farklı alt kurgu = 10 özgün soru türü bulunur.
+    // ============================================================================
+    function generateDynamicProblem(levelKey, opKey, themeKey, forcedVariant = null) {
+      const cfg = levelConfigs[levelKey] || levelConfigs.level2;
       const p1 = pick(names);
       let p2 = pick(names);
       while (p2 === p1) p2 = pick(names);
@@ -868,301 +975,622 @@
       const a = randInt(cfg.minAdd, cfg.maxAdd);
       const b = randInt(cfg.minAdd, cfg.maxAdd);
       const subTotal = randInt(cfg.minSub, cfg.maxSub);
-      const subPart = randInt(Math.max(2, Math.floor(subTotal * 0.2)), Math.floor(subTotal * 0.7));
+      const subPart = randInt(Math.max(2, Math.floor(subTotal * 0.22)), Math.floor(subTotal * 0.68));
       const g = randInt(cfg.gMin, cfg.gMax);
       const m = randInt(cfg.mMin, cfg.mMax);
       const prod = g * m;
       const v = randInt(cfg.vMin, cfg.vMax);
-      const t = randInt(2, 5);
+      const t = randInt(2, 6);
       const dist = v * t;
-      const variant = randInt(1, 3);
+      const variant = forcedVariant || randInt(1, 2); // Her işlemde 2 alt kurgu -> 5 işlem x 2 = 10 farklı soru türü
 
       let text = "", answer = "", visual = "";
 
-      // 1. ZAMAN VE YAŞ PROBLEMLERİ
-      if (themeKey === "time_age") {
+      // -------------------------------------------------------------------------
+      // 1. AĞIRLIK PROBLEMLERİ (10 Farklı Soru Türü)
+      // -------------------------------------------------------------------------
+      if (themeKey === "weight") {
         if (opKey === "add") {
           if (variant === 1) {
-            const sh = randInt(8, 11), dur = randInt(2, 4);
-            visual = svgClock(sh, `Başlangıç: 0${sh}.00 | Süre: +${dur} Saat | Bitiş: ?`);
-            text = `Saat 0${sh}.00'da başlayan film ${dur} saat sürdü. Film bittiğinde saat kaç olur?`;
-            answer = `${sh + dur}.00`;
-          } else if (variant === 2) {
-            const y1 = randInt(7, 14), y2 = randInt(6, 13);
-            visual = `<div class="svg-schema"><span class="dot-badge">${p1}: ${y1} Yaş</span> + <span class="dot-badge">${p2}: ${y2} Yaş</span></div>`;
-            text = `${p1} ${y1} yaşında, ${p2} ise ${y2} yaşındadır. İkisinin yaşları toplamı kaçtır?`;
-            answer = `${y1 + y2}`;
+            // Tür 1: Manav Tartımı Toplama
+            visual = badgesHTML(`Elma: ${fmt(a)} kg`, `+ Armut: ${fmt(b)} kg`);
+            text = `Manavdan ${fmt(a)} kg elma ve ${fmt(b)} kg armut alan ${p1}, toplam kaç kilogram meyve almıştır?`;
+            answer = `${fmt(a + b)} kg`;
           } else {
-            const now = randInt(8, 15), after = randInt(4, 8);
-            visual = `<div class="svg-schema"><span class="dot-badge">Bugün: ${now} Yaş</span> ➔ <span class="dot-badge">+${after} Yıl Sonra</span></div>`;
-            text = `Bugün ${now} yaşında olan ${p1}, ${after} yıl sonra kaç yaşında olur?`;
-            answer = `${now + after}`;
+            // Tür 2: Kamyon Yükleme / Koli Tartımı
+            visual = badgesHTML(`1. Yük: ${fmt(a)} kg`, `+ 2. Yük: ${fmt(b)} kg`);
+            text = `Bir nakliye aracına önce ${fmt(a)} kg patates, sonra ${fmt(b)} kg soğan yüklendi. Araca toplam kaç kg yük konulmuştur?`;
+            answer = `${fmt(a + b)} kg`;
           }
         } else if (opKey === "sub") {
           if (variant === 1) {
-            const mom = randInt(32, 45), kid = randInt(8, 14);
-            visual = `<div class="svg-schema"><span class="dot-badge">Anne: ${mom} Yaş</span> − <span class="dot-badge">${p1}: ${kid} Yaş</span></div>`;
-            text = `Annesi ${mom} yaşında, ${p1} ise ${kid} yaşındadır. İkisinin yaşları farkı kaçtır?`;
-            answer = `${mom - kid}`;
+            // Tür 3: Çuvaldan Eksilen Un/Şeker
+            visual = badgesHTML(`Çuval: ${fmt(subTotal)} kg`, `− Kullanılan: ${fmt(subPart)} kg`);
+            text = `Fırındaki ${fmt(subTotal)} kg'lık un deposundan ${fmt(subPart)} kg un kullanıldı. Depoda geriye kaç kg un kaldı?`;
+            answer = `${fmt(subTotal - subPart)} kg`;
           } else {
-            const totMin = randInt(40, 55), doneMin = randInt(15, 25);
-            visual = svgClock(10, `Toplam Süre: ${totMin} dk | Geçen: ${doneMin} dk`);
-            text = `${totMin} dakikalık dersin ${doneMin} dakikası geride kaldı. Dersin bitmesine geriye kaç dakika kalmıştır?`;
-            answer = `${totMin - doneMin} dk`;
+            // Tür 4: Dara / Brüt - Net Ağırlık Farkı
+            const dara = Math.max(1, Math.floor(subTotal * 0.12));
+            visual = badgesHTML(`Dolu Kasa: ${fmt(subTotal)} kg`, `− Boş Kasa: ${fmt(dara)} kg`);
+            text = `İçinde meyve bulunan bir kasa tartıldığında ${fmt(subTotal)} kg geliyor. Boş kasanın ağırlığı ${fmt(dara)} kg olduğuna göre içindeki meyvenin net ağırlığı kaç kg'dır?`;
+            answer = `${fmt(subTotal - dara)} kg`;
           }
         } else if (opKey === "mul") {
           if (variant === 1) {
-            const minDay = randInt(15, 25), days = randInt(3, 6);
-            visual = svgClock(4, `Günde ${minDay} dk × ${days} Gün`);
-            text = `Günde ${minDay} dakika kitap okuyan ${p1}, ${days} günde toplam kaç dakika kitap okur?`;
-            answer = `${minDay * days} dk`;
+            // Tür 5: Kasalardaki Toplam Meyve
+            visual = badgesHTML(`${fmt(g)} Kasa`, `× Her birinde ${fmt(m)} kg`);
+            text = `Her birinde ${fmt(m)} kg portakal bulunan ${fmt(g)} kasada toplam kaç kilogram portakal vardır?`;
+            answer = `${fmt(prod)} kg`;
           } else {
-            const wks = randInt(2, 6);
-            visual = `<div class="svg-schema"><span class="dot-badge">1 Hafta = 7 Gün</span> × <span class="dot-badge">${wks} Hafta</span></div>`;
-            text = `${wks} hafta boyunca her gün düzenli yürüyüş yapan ${p2}, toplam kaç gün yürüyüş yapmıştır?`;
-            answer = `${wks * 7} gün`;
+            // Tür 6: Çuvallardaki Toplam Bakliyat
+            visual = badgesHTML(`${fmt(g)} Çuval`, `× Çuval Başı ${fmt(m)} kg`);
+            text = `Bir toptancı her biri ${fmt(m)} kg gelen ${fmt(g)} çuval pirinç satın aldı. Toptancı toplam kaç kg pirinç almıştır?`;
+            answer = `${fmt(prod)} kg`;
           }
         } else if (opKey === "div") {
-          const wks = randInt(2, 7);
-          visual = `<div class="svg-schema"><span class="dot-badge">Toplam: ${wks * 7} Gün</span> ÷ <span class="dot-badge">7 Gün (1 Hafta)</span></div>`;
-          text = `Okul projesi için ${wks * 7} gün çalışan ${p1}, toplam kaç hafta çalışmıştır?`;
-          answer = `${wks} hafta`;
+          if (variant === 1) {
+            // Tür 7: Çuvaldaki Ürünü Eş Poşetlere Paylaştırma
+            visual = badgesHTML(`Toplam: ${fmt(prod)} kg`, `÷ ${fmt(g)} Eş Poşet`);
+            text = `${fmt(prod)} kg ceviz ${fmt(g)} poşete eşit olarak paylaştırdı. Her birinde kaç kg ceviz olur?`;
+            answer = `${fmt(m)} kg`;
+          } else {
+            // Tür 8: Toplam Ağırlıktan Kasa Sayısını Bulma
+            visual = badgesHTML(`Toplam: ${fmt(prod)} kg`, `÷ Kasa Kapasitesi: ${fmt(m)} kg`);
+            text = `Bahçeden toplanan ${fmt(prod)} kg domates, her biri ${fmt(m)} kg alan kasalara eşit olarak dolduruldu. Bu iş için kaç kasa kullanılmıştır?`;
+            answer = `${fmt(g)} kasa`;
+          }
         } else {
-          const wks = randInt(2, 3), dailyP = randInt(2, 5);
-          visual = `<div class="svg-schema"><span class="dot-badge">${wks} Hafta (${wks}×7 gün)</span> × <span class="dot-badge">Günde ${dailyP} Saat</span></div>`;
-          text = `${wks} hafta boyunca her gün ${dailyP} saat antrenman yapan ${p1}, toplam kaç saat antrenman yapmıştır?`;
-          answer = `${wks * 7 * dailyP} saat`;
+          if (variant === 1) {
+            // Tür 9: Çoklu Kasadan Satış Sonrası Kalan (Çarpma + Çıkarma)
+            const sold = randInt(2, Math.max(3, prod - 3));
+            visual = badgesHTML(`${fmt(g)} Kasa × ${fmt(m)} kg`, `− Satılan: ${fmt(sold)} kg`);
+            text = `Her birinde ${fmt(m)} kg çilek olan ${fmt(g)} kasa çileğin ${fmt(sold)} kilogramı satıldı. Geriye kaç kg çilek kaldı?`;
+            answer = `${fmt(prod - sold)} kg`;
+          } else {
+            // Tür 10: İki Çuvalı Birleştirip Eş Paketlere Bölme (Toplama + Bölme)
+            const pCount = g;
+            const totalW = pCount * m;
+            const c1 = Math.floor(totalW * 0.45);
+            const c2 = totalW - c1;
+            visual = badgesHTML(`(${fmt(c1)} kg + ${fmt(c2)} kg)`, `÷ ${fmt(pCount)} Paket`);
+            text = `Birinci çuvaldaki ${fmt(c1)} kg mercimek ile ikinci çuvaldaki ${fmt(c2)} kg mercimek karıştırılıp ${fmt(pCount)} eş pakete eşit olarak paylaştırdı. Her birinde kaç kg mercimek olur?`;
+            answer = `${fmt(m)} kg`;
+          }
         }
       }
 
-      // 2. UZUNLUK VE ÇEVRE PROBLEMLERİ
+      // -------------------------------------------------------------------------
+      // 2. ZAMAN VE YAŞ PROBLEMLERİ (10 Farklı Soru Türü)
+      // -------------------------------------------------------------------------
+      else if (themeKey === "time_age") {
+        if (opKey === "add") {
+          if (variant === 1) {
+            // Tür 1: İki Kişinin Yaşları Toplamı
+            visual = badgesHTML(`${p1}: ${fmt(a)}`, `+ ${p2}: ${fmt(b)}`);
+            text = `Bir doğa parkındaki çınar ağacı ${fmt(a)} yaşında, meşe ağacı ise ${fmt(b)} yaşındadır. İkisinin yaşları toplamı kaçtır?`;
+            answer = `${fmt(a + b)}`;
+          } else {
+            // Tür 2: Etkinlik/Çalışma Sürelerini Birleştirme
+            visual = svgClock(9, `1. Etüt: ${fmt(a)} dk | 2. Etüt: +${fmt(b)} dk`);
+            text = `${p1} birinci gün ${fmt(a)} dakika, ikinci gün ${fmt(b)} dakika proje çalışması yaptı. İki günde toplam kaç dakika çalışmıştır?`;
+            answer = `${fmt(a + b)} dk`;
+          }
+        } else if (opKey === "sub") {
+          if (variant === 1) {
+            // Tür 3: Yaş veya Tarih Farkı
+            visual = badgesHTML(`Büyük: ${fmt(subTotal)}`, `− Küçük: ${fmt(subPart)}`);
+            text = `Tarihi bir kütüphane ${fmt(subTotal)} yıllık, yanındaki okul binası ise ${fmt(subPart)} yıllıktır. İki yapının yaşları farkı kaçtır?`;
+            answer = `${fmt(subTotal - subPart)} yıl`;
+          } else {
+            // Tür 4: Toplam Süreden Geçen Süreyi Çıkarma
+            visual = svgClock(10, `Toplam Süre: ${fmt(subTotal)} dk | Geçen: ${fmt(subPart)} dk`);
+            text = `${fmt(subTotal)} dakikalık bir eğitim programının ${fmt(subPart)} dakikası tamamlandı. Programın bitmesine geriye kaç dakika kalmıştır?`;
+            answer = `${fmt(subTotal - subPart)} dk`;
+          }
+        } else if (opKey === "mul") {
+          if (variant === 1) {
+            // Tür 5: Günlük Okuma/Çalışma Süresi × Gün Sayısı
+            visual = svgClock(4, `Her gün ${fmt(m)} dk × ${fmt(g)} Gün`);
+            text = `Her gün düzenli olarak ${fmt(m)} dakika kitap okuyan ${p1}, ${fmt(g)} günde toplam kaç dakika kitap okur?`;
+            answer = `${fmt(prod)} dk`;
+          } else {
+            // Tür 6: Hafta / Ay / Gün Çevrimi
+            visual = badgesHTML(`${fmt(g)} Dönem`, `× Her dönemde ${fmt(m)} Gün`);
+            text = `Her biri ${fmt(m)} gün süren ${fmt(g)} farklı kurs dönemine katılan ${p2}, toplam kaç gün kursa gitmiştir?`;
+            answer = `${fmt(prod)} gün`;
+          }
+        } else if (opKey === "div") {
+          if (variant === 1) {
+            // Tür 7: Toplam Süreyi Günlere Eşit Paylaştırma
+            visual = badgesHTML(`Toplam: ${fmt(prod)} dk`, `÷ ${fmt(g)} Gün`);
+            text = `${fmt(g)} günde toplam ${fmt(prod)} dakika antrenman yapan ${p1}, her gün eşit süre çalıştığına göre günde kaç dakika antrenman yapmıştır?`;
+            answer = `${fmt(m)} dk`;
+          } else {
+            // Tür 8: Toplam Gün Sayısından Grup/Dönem Bulma
+            visual = badgesHTML(`Toplam: ${fmt(prod)} Saat`, `÷ Günde ${fmt(m)} Saat`);
+            text = `Toplam ${fmt(prod)} saat sürecek bir yazılım eğitimi, günde ${fmt(m)} saat ders yapılarak kaç günde tamamlanır?`;
+            answer = `${fmt(g)} gün`;
+          }
+        } else {
+          if (variant === 1) {
+            // Tür 9: Yaş Katı ve Fazlası
+            const ex = randInt(3, 18);
+            visual = badgesHTML(`Başlangıç: ${fmt(m)}`, `× ${fmt(g)} Katı + ${fmt(ex)}`);
+            text = `${p1} bir bulmacayı ${fmt(m)} saniyede çözdü. ${p2}'in çözüm süresi, ${p1}'in süresinin ${fmt(g)} katının ${fmt(ex)} saniye fazlasıdır. ${p2} bulmacayı kaç saniyede çözmüştür?`;
+            answer = `${fmt(prod + ex)} sn`;
+          } else {
+            // Tür 10: Planlanan Süreden Yapılan Çalışmayı Çıkarma
+            const target = prod + randInt(10, 60);
+            visual = badgesHTML(`Hedef: ${fmt(target)} dk`, `− (${fmt(g)} gün × ${fmt(m)} dk)`);
+            text = `Toplam ${fmt(target)} dakikalık çalışma hedefi olan ${p1}, ${fmt(g)} gün boyunca her gün ${fmt(m)} dakika çalıştı. Hedefini tamamlamak için geriye kaç dakikası kaldı?`;
+            answer = `${fmt(target - prod)} dk`;
+          }
+        }
+      }
+
+      // -------------------------------------------------------------------------
+      // 3. UZUNLUK VE ÇEVRE PROBLEMLERİ (10 Farklı Soru Türü)
+      // -------------------------------------------------------------------------
       else if (themeKey === "length_perim") {
         if (opKey === "add") {
-          visual = `<div class="svg-schema"><span class="dot-badge">1. İp: ${a} m</span> + <span class="dot-badge">2. İp: ${b} m</span></div>`;
-          text = `Uç uca eklenen iki ipten birincisi ${a} metre, ikincisi ${b} metredir. İpin toplam uzunluğu kaç metre olmuştur?`;
-          answer = `${a + b} m`;
+          if (variant === 1) {
+            // Tür 1: İki İp veya Kabloyu Uç Uca Ekleme
+            visual = badgesHTML(`1. Kablo: ${fmt(a)} m`, `+ 2. Kablo: ${fmt(b)} m`);
+            text = `Uç uca eklenen iki kablodan birincisi ${fmt(a)} metre, ikincisi ${fmt(b)} metredir. Kablonun toplam uzunluğu kaç metre olmuştur?`;
+            answer = `${fmt(a + b)} m`;
+          } else {
+            // Tür 2: İki Aşamalı Yürüyüş Parkuru
+            visual = badgesHTML(`1. Etap: ${fmt(a)} m`, `+ 2. Etap: ${fmt(b)} m`);
+            text = `Doğa yürüyüşünde önce ${fmt(a)} metre, mola verdikten sonra ${fmt(b)} metre daha yürüyen ${p1}, toplam kaç metre yürümüştür?`;
+            answer = `${fmt(a + b)} m`;
+          }
         } else if (opKey === "sub") {
-          visual = `<div class="svg-schema"><span class="dot-badge">Kumaş: ${subTotal} m</span> − <span class="dot-badge">Kesilen: ${subPart} m</span></div>`;
-          text = `Bir terzi ${subTotal} metre kumaşın ${subPart} metresini elbise dikmek için kesti. Geriye kaç metre kumaş kaldı?`;
-          answer = `${subTotal - subPart} m`;
+          if (variant === 1) {
+            // Tür 3: Kumaş Topundan Kesilen Parça
+            visual = badgesHTML(`Kumaş: ${fmt(subTotal)} m`, `− Kesilen: ${fmt(subPart)} m`);
+            text = `Bir terzi ${fmt(subTotal)} metre kumaşın ${fmt(subPart)} metresini perde dikmek için kullandı. Geriye kaç metre kumaş kaldı?`;
+            answer = `${fmt(subTotal - subPart)} m`;
+          } else {
+            // Tür 4: İki Uzunluk Arasındaki Fark
+            visual = badgesHTML(`1. Köprü: ${fmt(subTotal)} m`, `− 2. Köprü: ${fmt(subPart)} m`);
+            text = `Birinci yürüyüş yolu ${fmt(subTotal)} metre, ikinci yürüyüş yolu ${fmt(subPart)} metredir. Birinci yol ikinci yoldan kaç metre daha fazladır?`;
+            answer = `${fmt(subTotal - subPart)} m`;
+          }
         } else if (opKey === "mul") {
           if (variant === 1) {
-            const side = randInt(5, 25);
-            visual = svgGarden(`Kare Bahçe: 1 Kenarı = ${side} m (4 Eş Kenar)`);
-            text = `Bir kenarı ${side} metre olan kare şeklindeki bahçenin çevresi toplam kaç metredir?`;
-            answer = `${side * 4} m`;
+            // Tür 5: Kare Bahçenin Çevresi
+            visual = svgGarden(`Kare Bahçe: 1 Kenarı = ${fmt(m)} m (4 Eş Kenar)`);
+            text = `Bir kenarı ${fmt(m)} metre olan kare şeklindeki bahçenin çevresi toplam kaç metredir?`;
+            answer = `${fmt(m * 4)} m`;
           } else {
-            const karis = randInt(12, 20), cnt = randInt(3, 6);
-            visual = `<div class="svg-schema"><span class="dot-badge">1 Karış = ${karis} cm</span> × <span class="dot-badge">${cnt} Karış</span></div>`;
-            text = `${p1}'in bir karışı ${karis} santimetredir. Sırasının boyu ${cnt} karış geldiğine göre sıra kaç santimetredir?`;
-            answer = `${karis * cnt} cm`;
+            // Tür 6: Eşit Uzunlukta Parçaların Toplamı
+            visual = badgesHTML(`${fmt(g)} Rulo Tel`, `× Her biri ${fmt(m)} m`);
+            text = `Her birinde ${fmt(m)} metre tel bulunan ${fmt(g)} ruloda toplam kaç metre tel vardır?`;
+            answer = `${fmt(prod)} m`;
           }
         } else if (opKey === "div") {
-          visual = `<div class="svg-schema"><span class="dot-badge">Tel: ${prod} m</span> ÷ <span class="dot-badge">${g} Eş Parça</span></div>`;
-          text = `${prod} metre uzunluğundaki bir tel eş parçalara bölünerek ${g} parça elde ediliyor. Her birinde kaç metre tel olur?`;
-          answer = `${m} m`;
+          if (variant === 1) {
+            // Tür 7: Teli Eş Parçalara Bölme
+            visual = badgesHTML(`Toplam Tel: ${fmt(prod)} m`, `÷ ${fmt(g)} Eş Parça`);
+            text = `${fmt(prod)} metre uzunluğundaki bir tel eş parçalara bölünerek ${fmt(g)} parça elde ediliyor. Her birinde kaç metre tel olur?`;
+            answer = `${fmt(m)} m`;
+          } else {
+            // Tür 8: Karenin Çevresinden Bir Kenarını Bulma
+            const perim = m * 4;
+            visual = svgGarden(`Kare Çevresi: ${fmt(perim)} m ÷ 4 Kenar`);
+            text = `Çevresi ${fmt(perim)} metre olan kare şeklindeki bir oyun alanının bir kenar uzunluğu kaç metredir?`;
+            answer = `${fmt(m)} m`;
+          }
         } else {
-          const side = randInt(4, 15), rows = randInt(2, 3);
-          visual = svgGarden(`Kare Bahçe Kenarı: ${side} m | ${rows} Sıra Tel`);
-          text = `Bir kenarı ${side} metre olan kare bahçenin çevresine ${rows} sıra tel çekilecektir. Toplam kaç metre tel gerekir?`;
-          answer = `${side * 4 * rows} m`;
+          if (variant === 1) {
+            // Tür 9: Kare Bahçeye Çok Sıralı Tel Çekme
+            const rows = randInt(2, 4);
+            visual = svgGarden(`Kenar: ${fmt(m)} m | Çevre × ${rows} Sıra Tel`);
+            text = `Bir kenarı ${fmt(m)} metre olan kare bahçenin çevresine ${rows} sıra tel çekilecektir. Toplam kaç metre tel gerekir?`;
+            answer = `${fmt(m * 4 * rows)} m`;
+          } else {
+            // Tür 10: Dikdörtgen Bahçenin Çevresi
+            const shortSide = m;
+            const longSide = m + g;
+            visual = svgGarden(`Kısa: ${fmt(shortSide)} m | Uzun: ${fmt(longSide)} m`);
+            text = `Kısa kenarı ${fmt(shortSide)} metre, uzun kenarı ${fmt(longSide)} metre olan dikdörtgen şeklindeki sahanın çevresi kaç metredir?`;
+            answer = `${fmt((shortSide + longSide) * 2)} m`;
+          }
         }
       }
 
-      // 3. DESTE, DÜZİNE VE KAT/KESİR KAVRAMLARI
+      // -------------------------------------------------------------------------
+      // 4. DESTE, DÜZİNE VE KAT/KESİR PROBLEMLERİ (10 Farklı Soru Türü)
+      // -------------------------------------------------------------------------
       else if (themeKey === "dozen_frac") {
         if (opKey === "add") {
-          const ex = randInt(4, 15);
-          visual = `<div class="svg-schema"><span class="dot-badge">1 Deste = 10 Adet</span> + <span class="dot-badge">${ex} Adet</span></div>`;
-          text = `Masada 1 deste boya kalemi ve ${ex} tane kurşun kalem vardır. Masada toplam kaç kalem vardır?`;
-          answer = `${10 + ex} kalem`;
+          if (variant === 1) {
+            // Tür 1: Deste + Eklenen Sayı
+            visual = badgesHTML(`1 Deste = 10`, `+ Eklenen: ${fmt(a)}`);
+            text = `Kutuda 1 deste boya kalemi vardı. Kutuya ${fmt(a)} kalem daha eklendi. Kutuda toplam kaç kalem oldu?`;
+            answer = `${fmt(10 + a)} kalem`;
+          } else {
+            // Tür 2: Düzine + Eklenen Sayı
+            visual = badgesHTML(`1 Düzine = 12`, `+ Eklenen: ${fmt(b)}`);
+            text = `Sepetteki 1 düzine elmanın yanına ${fmt(b)} elma daha konuldu. Sepette toplam kaç elma oldu?`;
+            answer = `${fmt(12 + b)} elma`;
+          }
         } else if (opKey === "sub") {
-          const brk = randInt(2, 5);
-          visual = `<div class="svg-schema"><span class="dot-badge">1 Düzine = 12 Adet</span> − <span class="dot-badge">${brk} Kırık</span></div>`;
-          text = `Marketten alınan 1 düzine yumurtanın ${brk} tanesi kırıldı. Geriye kaç sağlam yumurta kaldı?`;
-          answer = `${12 - brk} yumurta`;
+          if (variant === 1) {
+            // Tür 3: Çoklu Desteden Kullanılanlar
+            const dCount = Math.max(2, g);
+            const totalD = dCount * 10;
+            const used = randInt(4, totalD - 4);
+            visual = badgesHTML(`${fmt(dCount)} Deste (${fmt(totalD)})`, `− Kullanılan: ${fmt(used)}`);
+            text = `Kırtasiyeden alınan ${fmt(dCount)} deste kalemin ${fmt(used)} tanesi dağıtıldı. Geriye kaç kalem kaldı?`;
+            answer = `${fmt(totalD - used)} kalem`;
+          } else {
+            // Tür 4: Çoklu Düzineden Eksilenler
+            const dzCount = Math.max(2, g);
+            const totalDz = dzCount * 12;
+            const brk = randInt(3, totalDz - 5);
+            visual = badgesHTML(`${fmt(dzCount)} Düzine (${fmt(totalDz)})`, `− Eksilen: ${fmt(brk)}`);
+            text = `Kolideki ${fmt(dzCount)} düzine bardaktan ${fmt(brk)} tanesi satıldı. Kolide geriye kaç bardak kaldı?`;
+            answer = `${fmt(totalDz - brk)} bardak`;
+          }
         } else if (opKey === "mul") {
           if (variant === 1) {
-            const dCnt = randInt(2, 5);
-            visual = `<div class="svg-schema"><span class="dot-badge">1 Deste = 10 Kalem</span> × <span class="dot-badge">${dCnt} Deste</span></div>`;
-            text = `Kırtasiyeden ${dCnt} deste kalem alan ${p1}, toplam kaç adet kalem almıştır?`;
-            answer = `${dCnt * 10} kalem`;
+            // Tür 5: Yarısı Verilen Sayının Tamamını Bulma
+            visual = svgFraction(2, 1, `Yarısı: ${fmt(m)} ➔ Tamamı (×2)`);
+            text = `Yarısı ${fmt(m)} olan sayının tamamı kaçtır?`;
+            answer = `${fmt(m * 2)}`;
           } else {
-            const dzCnt = randInt(2, 4);
-            visual = `<div class="svg-schema"><span class="dot-badge">1 Düzine = 12 Adet</span> × <span class="dot-badge">${dzCnt} Düzine</span></div>`;
-            text = `Çiçekçide ${dzCnt} düzine papatya vardır. Çiçekçide toplam kaç adet papatya vardır?`;
-            answer = `${dzCnt * 12} papatya`;
+            // Tür 6: Çeyreği Verilen Sayının Tamamını Bulma
+            visual = svgFraction(4, 1, `Çeyreği: ${fmt(m)} ➔ Tamamı (×4)`);
+            text = `Bir sepetteki cevizlerin çeyreği ${fmt(m)} tanedir. Sepette toplam kaç ceviz vardır?`;
+            answer = `${fmt(m * 4)} ceviz`;
           }
         } else if (opKey === "div") {
           if (variant === 1) {
-            const whole = randInt(4, 20) * 2;
-            visual = svgFraction(2, 1, `Bütün: ${whole} ➔ Yarısı (÷2)`);
-            text = `Sepetteki ${whole} elmanın yarısı satıldı. Kaç tane elma satılmıştır?`;
-            answer = `${whole / 2} elma`;
+            // Tür 7: Bir Sayının Yarısını Bulma
+            const whole2 = m * 2;
+            visual = svgFraction(2, 1, `Bütün: ${fmt(whole2)} ➔ Yarısı (÷2)`);
+            text = `Kütüphanedeki ${fmt(whole2)} kitabın yarısı hikâye kitabıdır. Kütüphanede kaç tane hikâye kitabı vardır?`;
+            answer = `${fmt(m)} kitap`;
           } else {
-            const whole4 = randInt(2, 12) * 4;
-            visual = svgFraction(4, 1, `Bütün: ${whole4} ➔ Çeyreği (÷4)`);
-            text = `${p1}, ${whole4} cevizin çeyreğini kardeşine verdi. Kardeşine kaç ceviz vermiştir?`;
-            answer = `${whole4 / 4} ceviz`;
+            // Tür 8: Bir Sayının Çeyreğini Bulma
+            const whole4 = m * 4;
+            visual = svgFraction(4, 1, `Bütün: ${fmt(whole4)} ➔ Çeyreği (÷4)`);
+            text = `${p1}, ${fmt(whole4)} fındığın çeyreğini arkadaşına ikram etti. Arkadaşına kaç fındık vermiştir?`;
+            answer = `${fmt(m)} fındık`;
           }
         } else {
-          const num = randInt(4, 14), kat = randInt(2, 4), faz = randInt(3, 8);
-          visual = `<div class="svg-schema"><span class="dot-badge">Sayı: ${num}</span> ➔ <span class="dot-badge">${kat} Katının ${faz} Fazlası</span></div>`;
-          text = `${p1}'in ${num} hikâye kitabı vardır. ${p2}'in kitapları, ${p1}'in kitaplarının ${kat} katının ${faz} fazlasıdır. ${p2}'in kaç kitabı vardır?`;
-          answer = `${(num * kat) + faz} kitap`;
+          if (variant === 1) {
+            // Tür 9: Bir Sayının Katının Fazlası
+            const ex = randInt(4, 25);
+            visual = badgesHTML(`Sayı: ${fmt(m)}`, `× ${fmt(g)} Katı + ${fmt(ex)} Fazlası`);
+            text = `${p1}'in ${fmt(m)} bilyesi vardır. ${p2}'in bilyeleri, ${p1}'in bilyelerinin ${fmt(g)} katının ${fmt(ex)} fazlasıdır. ${p2}'in kaç bilyesi vardır?`;
+            answer = `${fmt(prod + ex)} bilye`;
+          } else {
+            // Tür 10: Yarısı Satılan Üründen Geriye Kalan + Eklenen
+            const whole = m * 4;
+            const added = randInt(5, 20);
+            visual = svgFraction(2, 1, `Bütün: ${fmt(whole)} | Yarısı Satıldı + ${fmt(added)} Eklendi`);
+            text = `Kasada bulunan ${fmt(whole)} elmanın yarısı satıldı. Daha sonra kasaya ${fmt(added)} elma daha eklendi. Son durumda kasada kaç elma oldu?`;
+            answer = `${fmt((whole / 2) + added)} elma`;
+          }
         }
       }
 
-      // 4. MİNİ FİYAT LİSTELİ / TABLOLU PARA PROBLEMLERİ
+      // -------------------------------------------------------------------------
+      // 5. MİNİ FİYAT TABLOLU PARA PROBLEMLERİ (10 Farklı Soru Türü)
+      // -------------------------------------------------------------------------
       else if (themeKey === "money") {
-        const pSimit = randInt(8, 15), pAyran = randInt(6, 12), pMeyve = randInt(10, 18);
-        visual = priceTableHTML("Simit", pSimit, "Ayran", pAyran, "Meyve Suyu", pMeyve);
+        const p1Price = randInt(cfg.priceMin, cfg.priceMax);
+        const p2Price = randInt(cfg.priceMin, cfg.priceMax);
+        const p3Price = randInt(cfg.priceMin + 2, cfg.priceMax + 10);
+        visual = priceTableHTML("Defter", p1Price, "Kalem", p2Price, "Boya Seti", p3Price);
+
         if (opKey === "add") {
-          text = `Yukarıdaki fiyat listesine göre 1 simit ve 1 meyve suyu alan ${p1}, toplam kaç TL öder?`;
-          answer = `${pSimit + pMeyve} TL`;
+          if (variant === 1) {
+            // Tür 1: Tablodan İki Ürün Toplamı
+            text = `Yukarıdaki fiyat listesine göre 1 defter ve 1 boya seti alan ${p1}, toplam kaç TL öder?`;
+            answer = `${fmt(p1Price + p3Price)} TL`;
+          } else {
+            // Tür 2: Kumbaraya Para Ekleme
+            visual = badgesHTML(`Kumbara: ${fmt(a)} TL`, `+ Eklenen: ${fmt(b)} TL`);
+            text = `Kumbarasında ${fmt(a)} TL bulunan ${p2}, harçlığından ${fmt(b)} TL daha ekledi. Kumbarada toplam kaç TL oldu?`;
+            answer = `${fmt(a + b)} TL`;
+          }
         } else if (opKey === "sub") {
-          const cash = pSimit + randInt(10, 25);
-          text = `Cebinde ${cash} TL olan ${p2}, tabloya göre 1 simit aldı. Geriye kaç TL parası kaldı?`;
-          answer = `${cash - pSimit} TL`;
+          if (variant === 1) {
+            // Tür 3: Alışveriş Sonrası Para Üstü
+            const cash = p3Price + randInt(cfg.priceMin, cfg.priceMax);
+            text = `Cebinde ${fmt(cash)} TL olan ${p1}, tabloya göre 1 boya seti aldı. Geriye kaç TL parası kaldı?`;
+            answer = `${fmt(cash - p3Price)} TL`;
+          } else {
+            // Tür 4: İki Ürünün Fiyat Farkı
+            const hi = Math.max(p1Price, p3Price) + 5;
+            const lo = Math.min(p1Price, p2Price);
+            visual = priceTableHTML("Çanta", hi, "Kalem", lo, "Defter", p1Price);
+            text = `Tabloya göre 1 çantanın fiyatı, 1 kalemin fiyatından kaç TL daha fazladır?`;
+            answer = `${fmt(hi - lo)} TL`;
+          }
         } else if (opKey === "mul") {
-          const qty = randInt(2, 5);
-          text = `Tabloya göre kantinden ${qty} tane ayran alan ${p1}, toplam kaç TL ödemelidir?`;
-          answer = `${qty * pAyran} TL`;
+          if (variant === 1) {
+            // Tür 5: Aynı Üründen Çoklu Alım
+            text = `Tabloya göre kırtasiyeden ${fmt(g)} adet defter alan ${p1}, toplam kaç TL ödemelidir?`;
+            answer = `${fmt(g * p1Price)} TL`;
+          } else {
+            // Tür 6: Düzenli Günlük/Haftalık Para Biriktirme
+            visual = badgesHTML(`${fmt(g)} Hafta`, `× Haftada ${fmt(m)} TL`);
+            text = `Her hafta kumbarasına ${fmt(m)} TL atan ${p2}, ${fmt(g)} haftada toplam kaç TL biriktirir?`;
+            answer = `${fmt(prod)} TL`;
+          }
         } else if (opKey === "div") {
-          const qty = randInt(2, 5);
-          text = `Tablodaki simitlerden alıp kantinciye toplam ${qty * pSimit} TL ödeyen ${p2}, kaç tane simit almıştır?`;
-          answer = `${qty} simit`;
+          if (variant === 1) {
+            // Tür 7: Toplam Ödemeden Alınan Ürün Adedini Bulma
+            const totalPaid = g * p2Price;
+            text = `Tablodaki kalemlerden alıp kırtasiyeciye toplam ${fmt(totalPaid)} TL ödeyen ${p1}, kaç adet kalem almıştır?`;
+            answer = `${fmt(g)} kalem`;
+          } else {
+            // Tür 8: Hesabı Arkadaşlarla Eşit Paylaşma
+            visual = badgesHTML(`Toplam Tutar: ${fmt(prod)} TL`, `÷ ${fmt(g)} Kişi`);
+            text = `Birlikte alınan hediye için toplam ${fmt(prod)} TL ödendi. Masrafı ${fmt(g)} arkadaş eşit olarak paylaştırdı. Her birine kaç TL düşer?`;
+            answer = `${fmt(m)} TL`;
+          }
         } else {
-          const sCnt = randInt(2, 3);
-          const cost = (sCnt * pSimit) + pAyran;
-          const paid = cost + randInt(10, 20);
-          text = `Tabloya göre ${sCnt} simit ve 1 ayran alan ${p1}, kantinciye ${paid} TL verdi. Kaç TL para üstü alır?`;
-          answer = `${paid - cost} TL`;
+          if (variant === 1) {
+            // Tür 9: Çoklu Ürün Alıp Para Üstü Hesaplama
+            const qty = randInt(2, 4);
+            const cost = (qty * p1Price) + p2Price;
+            const paid = cost + randInt(10, 50);
+            text = `Tabloya göre ${qty} defter ve 1 kalem alan ${p1}, kasaya ${fmt(paid)} TL verdi. Kaç TL para üstü alır?`;
+            answer = `${fmt(paid - cost)} TL`;
+          } else {
+            // Tür 10: İki Farklı Üründen Çoklu Alım Toplamı
+            const q1 = randInt(2, 3), q2 = randInt(2, 3);
+            const totalCost = (q1 * p1Price) + (q2 * p2Price);
+            text = `Tabloya göre ${q1} defter ve ${q2} kalem alan ${p2}, kırtasiyeciye toplam kaç TL öder?`;
+            answer = `${fmt(totalCost)} TL`;
+          }
         }
       }
 
-      // 5. AĞIRLIK ÖLÇME PROBLEMLERİ
-      else if (themeKey === "weight") {
-        visual = `<div class="svg-schema"><span class="dot-badge">1. Tartım: ${a} kg</span> + <span class="dot-badge">2. Tartım: ${b} kg</span></div>`;
-        if (opKey === "add") {
-          text = `Manavdan ${a} kg elma ve ${b} kg armut alan ${p1}, toplam kaç kilogram meyve almıştır?`;
-          answer = `${a + b} kg`;
-        } else if (opKey === "sub") {
-          visual = `<div class="svg-schema"><span class="dot-badge">Çuval: ${subTotal} kg</span> − <span class="dot-badge">Kullanılan: ${subPart} kg</span></div>`;
-          text = `${subTotal} kg'lık un çuvalından ${subPart} kg un kullanıldı. Çuvalda geriye kaç kg un kaldı?`;
-          answer = `${subTotal - subPart} kg`;
-        } else if (opKey === "mul") {
-          visual = `<div class="svg-schema"><span class="dot-badge">${g} Kasa</span> × <span class="dot-badge">Her birinde ${m} kg</span></div>`;
-          text = `Her birinde ${m} kg portakal bulunan ${g} kasada toplam kaç kilogram portakal vardır?`;
-          answer = `${prod} kg`;
-        } else if (opKey === "div") {
-          visual = `<div class="svg-schema"><span class="dot-badge">Toplam: ${prod} kg</span> ÷ <span class="dot-badge">${g} Eş Poşet</span></div>`;
-          text = `${prod} kg ceviz ${g} poşete eşit olarak paylaştırdı. Her poşette kaç kg ceviz olur?`;
-          answer = `${m} kg`;
-        } else {
-          const sold = randInt(2, prod - 3);
-          visual = `<div class="svg-schema"><span class="dot-badge">${g} Kasa × ${m} kg</span> − <span class="dot-badge">Satılan: ${sold} kg</span></div>`;
-          text = `Her birinde ${m} kg çilek olan ${g} kasa çileğin ${sold} kilogramı satıldı. Geriye kaç kg çilek kaldı?`;
-          answer = `${prod - sold} kg`;
-        }
-      }
-
-      // 6. SIVI ÖLÇME PROBLEMLERİ
+      // -------------------------------------------------------------------------
+      // 6. SIVI ÖLÇME PROBLEMLERİ (10 Farklı Soru Türü)
+      // -------------------------------------------------------------------------
       else if (themeKey === "liquid") {
-        visual = `<div class="svg-schema"><span class="dot-badge">1. Kap: ${a} L</span> + <span class="dot-badge">2. Kap: ${b} L</span></div>`;
         if (opKey === "add") {
-          text = `Bir su deposuna önce ${a} litre, sonra ${b} litre su konuldu. Depoya toplam kaç litre su konulmuştur?`;
-          answer = `${a + b} L`;
+          if (variant === 1) {
+            // Tür 1: Su Deposuna İki Kez Su Ekleme
+            visual = badgesHTML(`1. Dolum: ${fmt(a)} L`, `+ 2. Dolum: ${fmt(b)} L`);
+            text = `Bir su deposuna önce ${fmt(a)} litre, sonra ${fmt(b)} litre su eklendi. Depoya toplam kaç litre su konulmuştur?`;
+            answer = `${fmt(a + b)} L`;
+          } else {
+            // Tür 2: İki Kazandaki Sütü Birleştirme
+            visual = badgesHTML(`1. Kazan: ${fmt(a)} L`, `+ 2. Kazan: ${fmt(b)} L`);
+            text = `Mandırada sabah ${fmt(a)} litre, akşam ${fmt(b)} litre süt toplandı. Gün boyunca toplam kaç litre süt toplanmıştır?`;
+            answer = `${fmt(a + b)} L`;
+          }
         } else if (opKey === "sub") {
-          visual = `<div class="svg-schema"><span class="dot-badge">Damacana: ${subTotal} L</span> − <span class="dot-badge">İçilen: ${subPart} L</span></div>`;
-          text = `${subTotal} litrelik damacana suyun ${subPart} litresi kullanıldı. Geriye kaç litre su kaldı?`;
-          answer = `${subTotal - subPart} L`;
+          if (variant === 1) {
+            // Tür 3: Damacanadan/Depodan Harcanan Su
+            visual = badgesHTML(`Depo: ${fmt(subTotal)} L`, `− Harcanan: ${fmt(subPart)} L`);
+            text = `${fmt(subTotal)} litrelik su deposundaki suyun ${fmt(subPart)} litresi bahçe sulamada kullanıldı. Depoda geriye kaç litre su kaldı?`;
+            answer = `${fmt(subTotal - subPart)} L`;
+          } else {
+            // Tür 4: Deponun Dolması İçin Gereken Sıvı
+            visual = badgesHTML(`Kapasite: ${fmt(subTotal)} L`, `− Mevcut: ${fmt(subPart)} L`);
+            text = `Tamamı ${fmt(subTotal)} litre su alan bir havuzda şu an ${fmt(subPart)} litre su vardır. Havuzun tamamen dolması için kaç litre daha su gerekir?`;
+            answer = `${fmt(subTotal - subPart)} L`;
+          }
         } else if (opKey === "mul") {
-          visual = `<div class="svg-schema"><span class="dot-badge">1 Sürahi = ${m} Bardak</span> × <span class="dot-badge">${g} Sürahi</span></div>`;
-          text = `Her birinde ${m} su bardağı limonata bulunan ${g} sürahide toplam kaç bardak limonata vardır?`;
-          answer = `${prod} bardak`;
+          if (variant === 1) {
+            // Tür 5: Sürahilerdeki Toplam Bardak Sayısı
+            visual = badgesHTML(`${fmt(g)} Sürahi`, `× Her birinde ${fmt(m)} Bardak`);
+            text = `Her birinde ${fmt(m)} su bardağı limonata bulunan ${fmt(g)} sürahide toplam kaç bardak limonata vardır?`;
+            answer = `${fmt(prod)} bardak`;
+          } else {
+            // Tür 6: Bidonlardaki Toplam Litre
+            visual = badgesHTML(`${fmt(g)} Bidon`, `× Bidon Başı ${fmt(m)} L`);
+            text = `Her biri ${fmt(m)} litre zeytinyağı alan ${fmt(g)} bidonda toplam kaç litre zeytinyağı vardır?`;
+            answer = `${fmt(prod)} L`;
+          }
         } else if (opKey === "div") {
-          visual = `<div class="svg-schema"><span class="dot-badge">${prod} Litre Süt</span> ÷ <span class="dot-badge">${m} L Şişeler</span></div>`;
-          text = `${prod} litre süt, ${m} litrelik şişelere eşit olarak paylaştırdı. Kaç şişe dolmuştur?`;
-          answer = `${g} şişe`;
+          if (variant === 1) {
+            // Tür 7: Toplam Sütü Eş Şişelere Doldurma
+            visual = badgesHTML(`Toplam: ${fmt(prod)} L Süt`, `÷ ${fmt(m)} L Şişeler`);
+            text = `${fmt(prod)} litre süt, her biri ${fmt(m)} litre alan şişelere eşit olarak paylaştırdı. Bu iş için kaç şişe kullanılmıştır?`;
+            answer = `${fmt(g)} şişe`;
+          } else {
+            // Tür 8: Toplam Sıvıyı Eş Bidonlara Bölme
+            visual = badgesHTML(`Toplam: ${fmt(prod)} L`, `÷ ${fmt(g)} Eş Bidon`);
+            text = `${fmt(prod)} litre meyve suyu ${fmt(g)} eş bidona eşit olarak dolduruldu. Her birinde kaç litre meyve suyu olur?`;
+            answer = `${fmt(m)} L`;
+          }
         } else {
-          const used = randInt(2, prod - 2);
-          visual = `<div class="svg-schema"><span class="dot-badge">${g} Bidon × ${m} L</span> − <span class="dot-badge">${used} L Kullanıldı</span></div>`;
-          text = `Her biri ${m} litre su alan ${g} bidon suyun ${used} litresi bahçe sulamada kullanıldı. Geriye kaç litre su kaldı?`;
-          answer = `${prod - used} L`;
+          if (variant === 1) {
+            // Tür 9: Çoklu Bidondan Kullanılan Sıvı Sonrası Kalan
+            const used = randInt(2, Math.max(3, prod - 3));
+            visual = badgesHTML(`${fmt(g)} Bidon × ${fmt(m)} L`, `− Kullanılan: ${fmt(used)} L`);
+            text = `Her biri ${fmt(m)} litre su alan ${fmt(g)} bidon suyun ${fmt(used)} litresi kullanıldı. Geriye kaç litre su kaldı?`;
+            answer = `${fmt(prod - used)} L`;
+          } else {
+            // Tür 10: Depodan Kova Kova Boşaltılan Su
+            const startWater = prod + randInt(15, 60);
+            visual = badgesHTML(`Depo: ${fmt(startWater)} L`, `− (${fmt(g)} Kova × ${fmt(m)} L)`);
+            text = `İçinde ${fmt(startWater)} litre su bulunan depodan, her biri ${fmt(m)} litre alan kovalarla ${fmt(g)} kova su alındı. Depoda geriye kaç litre su kaldı?`;
+            answer = `${fmt(startWater - prod)} L`;
+          }
         }
       }
 
-      // 7. HIZ VE YOL PROBLEMLERİ
+      // -------------------------------------------------------------------------
+      // 7. HIZ, YOL VE ZAMAN PROBLEMLERİ (10 Farklı Soru Türü)
+      // -------------------------------------------------------------------------
       else if (themeKey === "speed") {
-        visual = `<div class="svg-schema"><span class="dot-badge">Hız: ${v} km/sa</span> <span class="dot-badge">Süre: ${t} sa</span> <span class="dot-badge">Yol: ${dist} km</span></div>`;
         if (opKey === "add") {
-          visual = `<div class="svg-schema"><span class="dot-badge">Sabah: ${a} km</span> + <span class="dot-badge">Öğleden Sonra: ${b} km</span></div>`;
-          text = `Bir bisikletli sabah ${a} km, öğleden sonra ${b} km yol gitti. Toplam kaç km yol gitmiştir?`;
-          answer = `${a + b} km`;
+          if (variant === 1) {
+            // Tür 1: Sabah ve Öğleden Sonra Gidilen Yol
+            visual = badgesHTML(`Sabah: ${fmt(a)} km`, `+ Öğleden Sonra: ${fmt(b)} km`);
+            text = `Bir bisikletli sabah ${fmt(a)} km, öğleden sonra ${fmt(b)} km yol gitti. Gün boyunca toplam kaç km yol gitmiştir?`;
+            answer = `${fmt(a + b)} km`;
+          } else {
+            // Tür 2: İki Şehir Arası Aktarmalı Mesafe
+            visual = badgesHTML(`1. Etap: ${fmt(a)} km`, `+ 2. Etap: ${fmt(b)} km`);
+            text = `Bir tren A şehrinden B şehrine ${fmt(a)} km, B şehrinden C şehrine ${fmt(b)} km yol aldı. Tren toplam kaç km yol gitmiştir?`;
+            answer = `${fmt(a + b)} km`;
+          }
         } else if (opKey === "sub") {
-          visual = `<div class="svg-schema"><span class="dot-badge">Yol: ${subTotal} km</span> − <span class="dot-badge">Gidilen: ${subPart} km</span></div>`;
-          text = `${subTotal} kilometrelik yolun ${subPart} kilometresini giden aracın geriye kaç km yolu kalmıştır?`;
-          answer = `${subTotal - subPart} km`;
+          if (variant === 1) {
+            // Tür 3: Toplam Yoldan Geriye Kalan Mesafe
+            visual = badgesHTML(`Toplam Yol: ${fmt(subTotal)} km`, `− Gidilen: ${fmt(subPart)} km`);
+            text = `${fmt(subTotal)} kilometrelik yolun ${fmt(subPart)} kilometresini giden bir aracın geriye kaç km yolu kalmıştır?`;
+            answer = `${fmt(subTotal - subPart)} km`;
+          } else {
+            // Tür 4: İki Aracın Aldığı Yolların Farkı
+            visual = badgesHTML(`1. Araç: ${fmt(subTotal)} km`, `− 2. Araç: ${fmt(subPart)} km`);
+            text = `Aynı noktadan yola çıkan iki araçtan birincisi ${fmt(subTotal)} km, ikincisi ${fmt(subPart)} km yol gitti. İki aracın aldığı yolların farkı kaç km'dir?`;
+            answer = `${fmt(subTotal - subPart)} km`;
+          }
         } else if (opKey === "mul") {
-          text = `Saatte ${v} km sabit hızla giden bir araç, ${t} saatte toplam kaç kilometre yol gider?`;
-          answer = `${dist} km`;
+          if (variant === 1) {
+            // Tür 5: Hız × Zaman = Alınan Yol
+            visual = badgesHTML(`Hız: ${fmt(v)} km/sa`, `× Süre: ${fmt(t)} saat`);
+            text = `Saatte ${fmt(v)} km sabit hızla giden bir otomobil, ${fmt(t)} saatte toplam kaç kilometre yol gider?`;
+            answer = `${fmt(dist)} km`;
+          } else {
+            // Tür 6: Pist Etrafında Atılan Turların Toplam Uzunluğu
+            visual = badgesHTML(`1 Tur: ${fmt(m)} m`, `× ${fmt(g)} Tur`);
+            text = `Uzunluğu ${fmt(m)} metre olan bir koşu pistinde ${fmt(g)} tur koşan sporcu, toplam kaç metre koşmuştur?`;
+            answer = `${fmt(prod)} m`;
+          }
         } else if (opKey === "div") {
-          text = `${dist} kilometrelik yolu sabit hızla ${t} saatte alan otobüsün saatteki hızı kaç kilometredir?`;
-          answer = `${v} km/sa`;
+          if (variant === 1) {
+            // Tür 7: Yol ÷ Zaman = Hız
+            visual = badgesHTML(`Yol: ${fmt(dist)} km`, `÷ Süre: ${fmt(t)} saat`);
+            text = `${fmt(dist)} kilometrelik yolu sabit hızla ${fmt(t)} saatte alan bir otobüsün saatteki hızı kaç kilometredir?`;
+            answer = `${fmt(v)} km/sa`;
+          } else {
+            // Tür 8: Yol ÷ Hız = Geçen Süre
+            visual = badgesHTML(`Yol: ${fmt(dist)} km`, `÷ Hız: ${fmt(v)} km/sa`);
+            text = `Saatte ${fmt(v)} km sabit hızla ilerleyen bir tren, ${fmt(dist)} kilometrelik yolu kaç saatte tamamlar?`;
+            answer = `${fmt(t)} saat`;
+          }
         } else {
-          const rem = randInt(10, 35);
-          visual = `<div class="svg-schema"><span class="dot-badge">Yol: ${dist + rem} km</span> − <span class="dot-badge">${t} sa × ${v} km/sa</span></div>`;
-          text = `Toplam ${dist + rem} km olan yolda saatte ${v} km hızla ${t} saat ilerleyen aracın geriye kaç km yolu kalmıştır?`;
-          answer = `${rem} km`;
+          if (variant === 1) {
+            // Tür 9: Belirli Süre İlerledikten Sonra Kalan Yol
+            const rem = randInt(15, 85);
+            visual = badgesHTML(`Toplam Yol: ${fmt(dist + rem)} km`, `− (${fmt(t)} sa × ${fmt(v)} km/sa)`);
+            text = `Toplam ${fmt(dist + rem)} km olan yolda saatte ${fmt(v)} km hızla ${fmt(t)} saat ilerleyen aracın geriye kaç km yolu kalmıştır?`;
+            answer = `${fmt(rem)} km`;
+          } else {
+            // Tür 10: İki Farklı Hız/Süre Etaplı Toplam Yol
+            const v2 = v + 10;
+            const totalDist = (v * 2) + (v2 * 2);
+            visual = badgesHTML(`2 sa × ${fmt(v)} km/sa`, `+ 2 sa × ${fmt(v2)} km/sa`);
+            text = `Bir araç önce saatte ${fmt(v)} km hızla 2 saat, sonra saatte ${fmt(v2)} km hızla 2 saat yol gitti. Araç toplam kaç km yol gitmiştir?`;
+            answer = `${fmt(totalDist)} km`;
+          }
         }
       }
 
-      // 8. GÜNLÜK YAŞAM VE NESNE PROBLEMLERİ
+      // -------------------------------------------------------------------------
+      // 8. GÜNLÜK YAŞAM VE NESNE PROBLEMLERİ (10 Farklı Soru Türü)
+      // -------------------------------------------------------------------------
       else {
-        const dots = "●".repeat(Math.min(5, m));
-        visual = `<div class="svg-schema"><span class="dot-badge">${dots}</span> <span class="dot-badge">${dots}</span> <span>Sayma & Gruplama</span></div>`;
         if (opKey === "add") {
-          text = `Kitaplığımda ${a} masal kitabı ve ${b} boyama kitabı vardır. Toplam kaç kitabım vardır?`;
-          answer = `${a + b} kitap`;
+          if (variant === 1) {
+            // Tür 1: Kitaplıktaki Kitapların Toplamı
+            visual = badgesHTML(`Masal: ${fmt(a)}`, `+ Bilim: ${fmt(b)}`);
+            text = `Okul kütüphanesine ${fmt(a)} masal kitabı ve ${fmt(b)} bilim kitabı bağışlandı. Kütüphaneye toplam kaç kitap bağışlanmıştır?`;
+            answer = `${fmt(a + b)} kitap`;
+          } else {
+            // Tür 2: Okuldaki Kız ve Erkek Öğrenci Toplamı
+            visual = badgesHTML(`Kız: ${fmt(a)}`, `+ Erkek: ${fmt(b)}`);
+            text = `Bir spor kulübünde ${fmt(a)} kız sporcu ve ${fmt(b)} erkek sporcu antrenman yapmaktadır. Kulüpte toplam kaç sporcu vardır?`;
+            answer = `${fmt(a + b)} sporcu`;
+          }
         } else if (opKey === "sub") {
-          text = `Sepetteki ${subTotal} cevizin ${subPart} tanesi yenildi. Sepette geriye kaç ceviz kaldı?`;
-          answer = `${subTotal - subPart} ceviz`;
+          if (variant === 1) {
+            // Tür 3: Fırında Satılan Ekmeklerden Kalanlar
+            visual = badgesHTML(`Üretilen: ${fmt(subTotal)}`, `− Satılan: ${fmt(subPart)}`);
+            text = `Bir fırında sabah çıkarılan ${fmt(subTotal)} simidin ${fmt(subPart)} tanesi satıldı. Fırında geriye kaç simit kaldı?`;
+            answer = `${fmt(subTotal - subPart)} simit`;
+          } else {
+            // Tür 4: Otoparktaki / Salondaki Boş Koltuk Sayısı
+            visual = badgesHTML(`Kapasite: ${fmt(subTotal)} Koltuk`, `− Dolu: ${fmt(subPart)} Koltuk`);
+            text = `${fmt(subTotal)} koltuklu bir tiyatro salonunda koltukların ${fmt(subPart)} tanesi doludur. Salonda geriye kaç boş koltuk kalmıştır?`;
+            answer = `${fmt(subTotal - subPart)} koltuk`;
+          }
         } else if (opKey === "mul") {
-          text = `Sınıftaki ${g} masanın her birinde ${m} öğrenci oturmaktadır. Sınıfta toplam kaç öğrenci vardır?`;
-          answer = `${prod} öğrenci`;
+          if (variant === 1) {
+            // Tür 5: Sınıf Sıralarındaki Toplam Öğrenci
+            visual = badgesHTML(`${fmt(g)} Grup/Sıra`, `× Her birinde ${fmt(m)} Öğrenci`);
+            text = `Etkinlik salonundaki ${fmt(g)} masanın her birinde ${fmt(m)} öğrenci oturmaktadır. Salonda toplam kaç öğrenci vardır?`;
+            answer = `${fmt(prod)} öğrenci`;
+          } else {
+            // Tür 6: Apartmandaki Toplam Daire veya Pencere
+            visual = badgesHTML(`${fmt(g)} Kat`, `× Her katta ${fmt(m)} Daire`);
+            text = `Her katında ${fmt(m)} daire bulunan ${fmt(g)} katlı bir sitede toplam kaç daire vardır?`;
+            answer = `${fmt(prod)} daire`;
+          }
         } else if (opKey === "div") {
-          text = `${p1} ${prod} tane kalemi ${g} kutuya eşit olarak paylaştırdı. Her birinde kaç kalem olur?`;
-          answer = `${m} kalem`;
+          if (variant === 1) {
+            // Tür 7: Kalemleri Kutulara Eşit Paylaştırma
+            visual = badgesHTML(`Toplam: ${fmt(prod)} Kalem`, `÷ ${fmt(g)} Kutu`);
+            text = `${p1}, ${fmt(prod)} adet boya kalemini ${fmt(g)} kutuya eşit olarak paylaştırdı. Her birinde kaç kalem olur?`;
+            answer = `${fmt(m)} kalem`;
+          } else {
+            // Tür 8: Fidanları Sıralara Eşit Dikme
+            visual = badgesHTML(`Toplam: ${fmt(prod)} Fidan`, `÷ Sıra Başı ${fmt(m)} Fidan`);
+            text = `Okul bahçesine alınan ${fmt(prod)} fidan, her sırada ${fmt(m)} fidan olacak şekilde eşit olarak dikildi. Toplam kaç sıra oluşmuştur?`;
+            answer = `${fmt(g)} sıra`;
+          }
         } else {
-          const gv = randInt(2, prod - 3);
-          text = `Her birinde ${m} kurabiye bulunan ${g} paket kurabiyenin ${gv} tanesi ikram edildi. Geriye kaç kurabiye kaldı?`;
-          answer = `${prod - gv} kurabiye`;
+          if (variant === 1) {
+            // Tür 9: Paketlerdeki Kurabiyelerden İkram Edilenler
+            const gv = randInt(2, Math.max(3, prod - 3));
+            visual = badgesHTML(`${fmt(g)} Paket × ${fmt(m)} Adet`, `− İkram: ${fmt(gv)}`);
+            text = `Her birinde ${fmt(m)} kurabiye bulunan ${fmt(g)} paket kurabiyenin ${fmt(gv)} tanesi misafirlere ikram edildi. Geriye kaç kurabiye kaldı?`;
+            answer = `${fmt(prod - gv)} kurabiye`;
+          } else {
+            // Tür 10: Toplanan Ürünlerden Bozuk Olanları Ayırıp Kasalama
+            const bad = randInt(3, 15);
+            const totalCollected = prod + bad;
+            visual = badgesHTML(`Toplanan: ${fmt(totalCollected)}`, `− ${fmt(bad)} Ayrıldı ÷ ${fmt(g)} Kutu`);
+            text = `Bahçeden toplanan ${fmt(totalCollected)} yumurtanın ${fmt(bad)} tanesi kırık olduğu için ayrıldı. Kalan sağlam yumurtalar ${fmt(g)} kutuya eşit olarak paylaştırdı. Her kutuda kaç yumurta olur?`;
+            answer = `${fmt(m)} yumurta`;
+          }
         }
       }
 
-      return { grade: gradeKey, op: opKey, theme: themeKey, visual, text: wrapKeywords(text), answer };
+      return { grade: levelKey, op: opKey, theme: themeKey, visual, text: wrapKeywords(text), answer };
     }
 
-    function createSingleQuestion(usedTexts = new Set()) {
-      const grade = document.getElementById("gradeLevelSelect").value;
+    function createSingleQuestion(usedTexts = new Set(), indexHint = 0) {
+      const level = document.getElementById("gradeLevelSelect").value;
       const poolPref = document.getElementById("poolSourceSelect").value;
       const activeOps = Array.from(document.querySelectorAll(".op-cb:checked")).map(cb => cb.value);
-      const ops = activeOps.length ? activeOps : ["add"];
+      const ops = activeOps.length ? activeOps : ["add", "sub", "mul", "div", "two_step"];
       const activeThemes = Array.from(document.querySelectorAll(".theme-cb:checked")).map(cb => cb.value);
-      const themes = activeThemes.length ? activeThemes : ["time_age"];
+      const themes = activeThemes.length ? activeThemes : ["weight"];
 
       const matchingCustom = customQuestions.filter(q =>
-        (q.grade === grade || poolPref === "custom_only") &&
+        (q.grade === level || poolPref === "custom_only") &&
         ops.includes(q.op) && themes.includes(q.theme) && !usedTexts.has(q.text)
       );
 
       if (poolPref === "custom_only" && matchingCustom.length > 0) return pick(matchingCustom);
-      if (poolPref === "mixed" && matchingCustom.length > 0 && Math.random() < 0.35) return pick(matchingCustom);
+      if (poolPref === "mixed" && matchingCustom.length > 0 && Math.random() < 0.3) return pick(matchingCustom);
 
+      // Tek bir konu seçildiğinde 10 farklı soru türünün tamamını dengeli dağıt
+      const allOpsOrder = ["add", "sub", "mul", "div", "two_step"];
       let generated = null;
-      for (let i = 0; i < 35; i++) {
-        generated = generateDynamicProblem(grade, pick(ops), pick(themes));
+
+      for (let attempt = 0; attempt < 40; attempt++) {
+        const chosenTheme = themes[(indexHint + attempt) % themes.length];
+        const chosenOp = ops.includes(allOpsOrder[indexHint % 5])
+          ? allOpsOrder[indexHint % 5]
+          : pick(ops);
+        const forcedVar = (Math.floor(indexHint / 5) + attempt) % 2 === 0 ? 1 : 2;
+        generated = generateDynamicProblem(level, chosenOp, chosenTheme, forcedVar);
         if (!usedTexts.has(generated.text)) break;
       }
       return generated;
@@ -1172,7 +1600,7 @@
       const usedTexts = new Set();
       current20Questions = [];
       for (let i = 0; i < 20; i++) {
-        const q = createSingleQuestion(usedTexts);
+        const q = createSingleQuestion(usedTexts, i);
         usedTexts.add(q.text);
         current20Questions.push(q);
       }
@@ -1181,7 +1609,7 @@
 
     function refreshSingleQuestion(idx) {
       const usedTexts = new Set(current20Questions.map(q => q.text));
-      current20Questions[idx] = createSingleQuestion(usedTexts);
+      current20Questions[idx] = createSingleQuestion(usedTexts, idx + randInt(1, 9));
       renderAllPages();
     }
 
@@ -1196,7 +1624,7 @@
         card.className = "question-card";
         card.innerHTML = `
           <div>
-            <button class="q-refresh-btn position-absolute top-1.5 right-1.5 w-5 h-5 rounded border text-[11px] flex items-center justify-center hover:bg-[#3F6A58] hover:text-white transition-colors" style="position:absolute; top:5px; right:5px; border-color: var(--border-color); background-color: var(--bg-paper);" title="Bu soruyu değiştir" onclick="refreshSingleQuestion(${idx})">↻</button>
+            <button type="button" class="q-refresh-btn w-5 h-5 rounded border text-[11px] flex items-center justify-center hover:bg-[#3F6A58] hover:text-white transition-colors cursor-pointer" style="position:absolute; top:5px; right:5px; border-color: var(--border-color); background-color: var(--bg-paper);" title="Bu soruyu değiştir" onclick="refreshSingleQuestion(${idx})">↻</button>
             <div class="flex items-start gap-1.5">
               <div class="w-5 h-5 rounded text-[11px] font-display font-bold flex items-center justify-center shrink-0 mt-0.5" style="background-color: var(--accent-primary); color: var(--bg-paper);">${idx + 1}</div>
               <div class="flex-1 pr-5">
@@ -1258,7 +1686,8 @@
 
     function updateHeaders() {
       const titleVal = document.getElementById("sheetTitleInput").value.trim() || "Dört İşlem Problemleri";
-      const gLabel = gradeConfigs[document.getElementById("gradeLevelSelect").value].label;
+      const lKey = document.getElementById("gradeLevelSelect").value;
+      const gLabel = levelConfigs[lKey] ? levelConfigs[lKey].label : "2. Seviye";
       document.querySelectorAll(".dynamic-sheet-title").forEach(el => el.textContent = titleVal);
       document.getElementById("subtitle-page-1").textContent = `${gLabel} • Bölüm 1 (1 - 10. Sorular)`;
       document.getElementById("subtitle-page-2").textContent = `${gLabel} • Bölüm 2 (11 - 20. Sorular)`;
@@ -1281,7 +1710,7 @@
     }
 
     function loadCustomPool() {
-      const saved = localStorage.getItem("ck_problem_pool_v5");
+      const saved = localStorage.getItem("ck_problem_pool_v6");
       if (saved) {
         try { customQuestions = JSON.parse(saved); } catch (e) { customQuestions = [...defaultCustomQuestions]; }
       } else {
@@ -1291,7 +1720,7 @@
     }
 
     function saveCustomPool() {
-      localStorage.setItem("ck_problem_pool_v5", JSON.stringify(customQuestions));
+      localStorage.setItem("ck_problem_pool_v6", JSON.stringify(customQuestions));
       renderCustomPool();
     }
 
@@ -1344,14 +1773,14 @@
         <div class="p-3.5 rounded-xl border flex justify-between items-start gap-3" style="background-color: var(--bg-paper); border-color: var(--border-color);">
           <div>
             <div class="flex flex-wrap gap-1.5 mb-1.5">
-              <span class="px-2 py-0.5 rounded text-[11px] font-bold" style="background-color: var(--accent-soft); color: var(--accent-primary);">${gradeConfigs[q.grade]?.label || q.grade}</span>
+              <span class="px-2 py-0.5 rounded text-[11px] font-bold" style="background-color: var(--accent-soft); color: var(--accent-primary);">${levelConfigs[q.grade]?.label || q.grade}</span>
               <span class="px-2 py-0.5 rounded text-[11px] font-bold" style="background-color: #F4E3DC; color: var(--accent-warm);">${opLabels[q.op] || q.op}</span>
               <span class="px-2 py-0.5 rounded text-[11px] font-bold" style="background-color: var(--bg-card); color: var(--text-secondary);">${themeLabels[q.theme] || q.theme}</span>
               <span class="px-2 py-0.5 rounded text-[11px] font-bold" style="background-color: var(--bg-card); color: var(--text-secondary);">Cevap: ${q.answer}</span>
             </div>
             <p class="text-xs leading-relaxed" style="color: var(--text-primary);">${q.text}</p>
           </div>
-          <button onclick="deleteCustomQuestion(${q.id})" class="px-2.5 py-1 rounded-lg border text-xs font-semibold shrink-0 hover:bg-[#C56B4E] hover:text-white transition-colors" style="border-color: var(--border-color); color: var(--accent-warm);">
+          <button type="button" onclick="deleteCustomQuestion(${q.id})" class="px-2.5 py-1 rounded-lg border text-xs font-semibold shrink-0 hover:bg-[#C56B4E] hover:text-white transition-colors cursor-pointer" style="border-color: var(--border-color); color: var(--accent-warm);">
             Sil
           </button>
         </div>
